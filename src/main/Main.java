@@ -21,6 +21,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Boolean connected = false;
+        String type = null;
         System.out.println("LOGIN");
         while (connected == false) {
             Scanner enteredUsername = new Scanner(System.in);  // Create a Scanner object
@@ -36,16 +37,27 @@ public class Main {
                 String sRetry = retry.nextLine();
                 if (sRetry.equals("n") || sRetry.equals("no")) {
                     System.out.println("REGISTER");
+                    // selected what type of profile
+
+                    while (type == null) {
+                        Scanner inputProfileType = new Scanner(System.in);  // Create a Scanner object
+                        System.out.println("What do you want to be ? : Owner(o) | Tenant(t) ");
+                        String profileType = inputProfileType.nextLine();
+                        if (profileType.equals("Owner") || profileType.equals("o")) {
+                            type = "Owner";
+                            break;
+                        } else if (profileType.equals("Tenant") || profileType.equals("t")) {
+                            type = "Tenant";
+                            break;
+                        } else {
+                            System.out.println(profileType + " is not a correct awnser");
+                        }
+                    }
                     // new Username
                     Scanner inputNewUsername = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter an username : ");
                     String newUsername = inputNewUsername.nextLine();
-
-                    // new Password
-                    Scanner inputNewPassword = new Scanner(System.in); // Create a Scanner object
-                    System.out.println("Enter a password : ");
-                    String newPassword = inputNewPassword.nextLine();
-                    System.out.println("Welcome " + newUsername + " !");
+                    System.out.println("Welcome " + newUsername + " ! " + "You are now a " + type);
                     connected = true;
                 }
             }
