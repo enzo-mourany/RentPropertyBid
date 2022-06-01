@@ -35,10 +35,13 @@ public class Main {
                 System.out.println("You have an account ? : y/n ");
                 String sRetry = retry.nextLine();
                 if (sRetry.equals("n") || sRetry.equals("no")) {
-                    System.out.println("LOGIN");
+                    System.out.println("REGISTER");
+                    // new Username
                     Scanner inputNewUsername = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter an username : ");
                     String newUsername = inputNewUsername.nextLine();
+
+                    // new Password
                     Scanner inputNewPassword = new Scanner(System.in); // Create a Scanner object
                     System.out.println("Enter a password : ");
                     String newPassword = inputNewPassword.nextLine();
