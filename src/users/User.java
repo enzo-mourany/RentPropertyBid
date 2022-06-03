@@ -9,5 +9,7 @@ package users;
  * @author enzomourany
  */
 public class User {
-    
+
+    protected String username;
+
 }

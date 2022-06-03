@@ -8,6 +8,8 @@ package users;
  *
  * @author enzomourany
  */
-public class Tenant {
-    
+public class Tenant extends User {
+    public Tenant(String _username) {
+        this.username = _username;
+    }
 }
