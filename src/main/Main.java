@@ -4,8 +4,9 @@
  */
 package main;
 
-import users.Logins;
+import users.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -14,12 +15,23 @@ import java.util.Scanner;
  * @author enzomourany
  */
 public class Main {
-    
+
+    ArrayList<User> users;
+
+
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ArrayList<User> users = new ArrayList<>();
+        users.add(new Tenant("Chris"));
+        users.add(new Tenant("Alex"));
+        users.add(new Owner("Patrick"));
+        users.add(new Owner("Sabine"));
+        users.add(new Administrator());
+
+
         Boolean connected = false;
         String type = null;
         System.out.println("LOGIN");
@@ -58,6 +70,11 @@ public class Main {
                     System.out.println("Enter an username : ");
                     String newUsername = inputNewUsername.nextLine();
                     System.out.println("Welcome " + newUsername + " ! " + "You are now a " + type);
+                    if (type.equals("Owner")) {
+                        Owner newUser = new Owner(newUsername);
+                    } else {
+                        Tenant newUser = new Tenant(newUsername);
+                    }
                     connected = true;
                 }
             }

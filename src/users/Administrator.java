@@ -8,6 +8,6 @@ package users;
  *
  * @author enzomourany
  */
-public class Administrator {
+public class Administrator extends User {
     
 }
