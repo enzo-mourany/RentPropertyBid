@@ -9,6 +9,8 @@ package users;
  * @author enzomourany
  */
 public class Tenant extends User {
+
+    private double walletBalance;
     public Tenant(String _username) {
         this.username = _username;
     }

@@ -4,10 +4,19 @@
  */
 package users;
 
+import property.Property;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author enzomourany
  */
-public class Owner {
-    
+public class Owner extends User {
+
+    ArrayList<Property> properties;
+    public Owner(String _username) {
+        this.username = _username;
+        this.properties = new ArrayList<>();
+    }
 }
