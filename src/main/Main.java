@@ -65,16 +65,20 @@ public class Main {
                             System.out.println(profileType + " is not a correct awnser");
                         }
                     }
+
                     // new Username
                     Scanner inputNewUsername = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter an username : ");
                     String newUsername = inputNewUsername.nextLine();
-                    System.out.println("Welcome " + newUsername + " ! " + "You are now a " + type);
+
+
                     if (type.equals("Owner")) {
-                        Owner newUser = new Owner(newUsername);
+                        users.add(new Owner(newUsername));
                     } else {
-                        Tenant newUser = new Tenant(newUsername);
+                        users.add(new Tenant(newUsername));
                     }
+
+                    System.out.println("Welcome " + newUsername + " ! " + "You are now a " + type);
                     connected = true;
                 }
             }
