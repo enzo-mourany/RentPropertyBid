@@ -4,8 +4,6 @@
  */
 package users;
 
-import java.util.ArrayList;
-
 
 /**
  *
@@ -13,5 +11,8 @@ import java.util.ArrayList;
  */
 public class Administrator extends User {
 
-
+    private final String USERNAME = "Administrator";
+    public Administrator() {
+        this.username = USERNAME;
+    }
 }
