@@ -4,6 +4,7 @@
  */
 package property;
 
+import static main.Main.*;
 /**
  *
  * @author enzomourany
@@ -25,5 +26,19 @@ public class Property {
         this.description = _description;
         this.maxNumberOfOccupants = _maxNumberOfOccupants;
         this.rateForOneNight = _rateForOneNight;
+    }
+
+    public String getPropertyName() {
+        return propertyName;
+    }
+    public void displayPropertyInfos() {
+        System.out.println("Type : " + ANSI_CYAN + this.type + ANSI_RESET + "\n"
+                + "Name : " + ANSI_CYAN + this.propertyName + ANSI_RESET + "\n"
+                + "Adress : " + ANSI_CYAN + this.adress + ANSI_RESET + "\n"
+                + "City : " + ANSI_CYAN + this.city + ANSI_RESET + "\n"
+                + "Description : " + ANSI_CYAN + this.description + ANSI_RESET + "\n"
+                + "Maximum number of occupants : " + ANSI_CYAN + this.maxNumberOfOccupants + ANSI_RESET + "\n"
+                + "Price for one night : " + ANSI_CYAN + this.rateForOneNight + ANSI_RESET + "\n"
+        );
     }
 }

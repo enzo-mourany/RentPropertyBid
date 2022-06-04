@@ -4,6 +4,7 @@
  */
 package main;
 
+import property.Property;
 import property.PropertyType;
 import users.*;
 
@@ -11,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static users.Administrator.*;
-import static users.Owner.addProperty;
-import static users.Owner.displayOwnerDashboard;
+import static users.Owner.*;
 
 
 /**
@@ -178,9 +178,12 @@ public class Main {
                                     // type
                                     Scanner inputPropertyType = new Scanner(System.in);
                                     System.out.println("Choose type of your property : " + "\n" + ANSI_PURPLE
-                                            + PropertyType.HOUSE.getName() + " " + PropertyType.APARTMENT.getName()
-                                            + " " + PropertyType.DOMAIN.getName() + " " + ANSI_RESET);
+                                                + PropertyType.HOUSE.getName() + " " + PropertyType.APARTMENT.getName()
+                                                + " " + PropertyType.DOMAIN.getName() + " " + ANSI_RESET);
                                     String propertyType = inputPropertyType.nextLine();
+
+
+
                                     PropertyType finalType = null;
                                     PropertyType[] propertyTypes = PropertyType.values();
                                     for (PropertyType p : propertyTypes) {
@@ -214,6 +217,12 @@ public class Main {
                                     int rateForOneNight = inputRateForOneNight.nextInt();
                                     //Creation of property
                                     addProperty(finalType, propertyName, adress, city, description, maxNumber, rateForOneNight);
+                                    for (Property p : portfolio) {
+                                        if (propertyName.equals(p.getPropertyName())) {
+                                            p.displayPropertyInfos();
+                                        }
+                                    }
+                                    break;
                             }
                         } else {
                             users.add(new Tenant(username, firstname, lastname, email));
