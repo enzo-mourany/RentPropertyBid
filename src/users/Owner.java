@@ -45,6 +45,18 @@ public class Owner extends User {
     }
 
     /**
+     *
+     * @return a list of all owner's properties name
+     */
+    public static ArrayList<String> getPropertiesName() {
+        ArrayList<String> propertiesName = new ArrayList<>();
+        for (Property p : portfolio) {
+            propertiesName.add(p.getPropertyName());
+        }
+        return propertiesName;
+    }
+
+    /**
      * Display all actions on the console
      */
     public static void displayOwnerDashboard() {
@@ -54,7 +66,9 @@ public class Owner extends User {
                 + "4. Change Last name" + "\n"
                 + "5. Change email" + "\n"
                 + "6. Disconnect" + "\n"
-                + "7. Add new property" + ANSI_RESET + "\n"
+                + "7. Add new property" + "\n"
+                + "8. See portfolio" + "\n"
+                + "9. Edit property information" + ANSI_RESET + "\n"
             );
     }
 }
