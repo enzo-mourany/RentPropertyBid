@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static users.Administrator.*;
-import static users.User.*;
 
 
 /**
@@ -116,50 +115,57 @@ public class Main {
                     System.out.println("Welcome " + username + " ! " + "You are now a " + ANSI_BLUE + type + ANSI_RESET);
                     connected = true;
 
-                    displayDashboard();
-                    Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
-                    int command = commandChoice.nextInt();
-                    switch(command){
-                        case 1:
-                            for (User user : users) {
-                                if (username.equals(user.getUsername())) {
-                                    System.out.println("Username : " + ANSI_CYAN + user.getUsername() + ANSI_RESET + "\n"
-                                        + "First name : " + ANSI_CYAN + user.getFirstName() + ANSI_RESET + "\n"
-                                            + "Last name : " + ANSI_CYAN + user.getLasttName() + ANSI_RESET + "\n"
-                                            + "Email : " + ANSI_CYAN + user.getEmail() + ANSI_RESET
-                                    );
+                    Boolean isDisconnected = true;
+                    while (isDisconnected) {
+                        displayDashboard();
+                        Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+                        int command = commandChoice.nextInt();
+                        switch(command){
+                            case 1:
+                                for (User user : users) {
+                                    if (username.equals(user.getUsername())) {
+                                        System.out.println("Username : " + ANSI_CYAN + user.getUsername() + ANSI_RESET + "\n"
+                                                + "First name : " + ANSI_CYAN + user.getFirstName() + ANSI_RESET + "\n"
+                                                + "Last name : " + ANSI_CYAN + user.getLastName() + ANSI_RESET + "\n"
+                                                + "Email : " + ANSI_CYAN + user.getEmail() + ANSI_RESET + "\n"
+                                        );
+                                    }
                                 }
-                            }
 
-                            break;
-                        case 2:
-                            Scanner InputNewUsername = new Scanner(System.in);
-                            System.out.println("Enter your new username : ");
-                            String newUsername = InputNewUsername.nextLine();
-                            changeUsername(username, newUsername);
-                            break;
-                        case 3:
-                            Scanner InputNewFirstName = new Scanner(System.in);
-                            System.out.println("Enter your new first name : ");
-                            String newFirstName = InputNewFirstName.nextLine();
-                            changeFirstName(username, newFirstName);
-                            break;
-                        case 4:
-                            Scanner InputNewLastName = new Scanner(System.in);
-                            System.out.println("Enter your new last name : ");
-                            String newLastName = InputNewLastName.nextLine();
-                            changeFirstName(username, newLastName);
-                            break;
-                        case 5:
-                            Scanner InputNewEmail = new Scanner(System.in);
-                            System.out.println("Enter your new email : ");
-                            String newEmail = InputNewEmail.nextLine();
-                            changeFirstName(username, newEmail);
-                            break;
-                        default:
-                            System.out.println("Incorrect choice");
-                            break;
+                                break;
+                            case 2:
+                                Scanner InputNewUsername = new Scanner(System.in);
+                                System.out.println("Enter your new username : ");
+                                String newUsername = InputNewUsername.nextLine();
+                                changeUsername(username, newUsername);
+                                break;
+                            case 3:
+                                Scanner InputNewFirstName = new Scanner(System.in);
+                                System.out.println("Enter your new first name : ");
+                                String newFirstName = InputNewFirstName.nextLine();
+                                changeFirstName(username, newFirstName);
+                                break;
+                            case 4:
+                                Scanner InputNewLastName = new Scanner(System.in);
+                                System.out.println("Enter your new last name : ");
+                                String newLastName = InputNewLastName.nextLine();
+                                changeFirstName(username, newLastName);
+                                break;
+                            case 5:
+                                Scanner InputNewEmail = new Scanner(System.in);
+                                System.out.println("Enter your new email : ");
+                                String newEmail = InputNewEmail.nextLine();
+                                changeFirstName(username, newEmail);
+                                break;
+                            case 6:
+                                isDisconnected = false;
+                                break;
+                            default:
+                                System.out.println("Incorrect choice");
+                                break;
+                        }
                     }
+
                 }
             }
         }

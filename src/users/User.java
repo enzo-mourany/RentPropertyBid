@@ -37,19 +37,19 @@ public class User {
 
     // Getters
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
-    public String getLasttName() {
-        return lastName;
+    public String getLastName() {
+        return this.lastName;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public static void displayDashboard() {
@@ -58,6 +58,7 @@ public class User {
         System.out.println(ANSI_GREEN + "3. Change First name" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "4. Change Last name" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "5. Change email" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "6. Disconnect" + ANSI_RESET);
     }
 
     /**
