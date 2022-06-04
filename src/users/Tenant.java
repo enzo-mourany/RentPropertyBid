@@ -10,8 +10,15 @@ package users;
  */
 public class Tenant extends User {
 
+    private String firstName;
+    private String lastName;
+    private String email;
     private double walletBalance;
-    public Tenant(String _username) {
+
+    public Tenant(String _username, String _firstName, String _lastName, String _email) {
         this.username = _username;
+        this.firstName = _firstName;
+        this.lastName = _lastName;
+        this.email = _email;
     }
 }

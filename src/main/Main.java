@@ -37,16 +37,17 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        users.add(new Tenant("Chris"));
-        users.add(new Tenant("Alex"));
-        users.add(new Owner("Patrick"));
-        users.add(new Owner("Sabine"));
+        // Defaults users
         users.add(new Administrator());
+        users.add(new Tenant("Chris", "Christian", "Bumstead", "chris.bumstead@gmail.com"));
+        users.add(new Tenant("Patrick", "Patrick", "Gustin", "patrick.gustin@gmail.com"));
+        users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
+        users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
 
 
         Boolean connected = false;
         Boolean isAdmin = false;
-        String type = null;
+        String type = null; // type of account : can be Owner or Tenant
         System.out.println("LOGIN");
         while (connected == false) {
             Scanner enteredUsername = new Scanner(System.in);  // Create a Scanner object
@@ -89,11 +90,25 @@ public class Main {
                     System.out.println("Enter an username : ");
                     String newUsername = inputNewUsername.nextLine();
 
+                    // firstname
+                    Scanner inputNewFirstName = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("Enter your firstname : ");
+                    String firstname = inputNewUsername.nextLine();
+
+                    // lastname
+                    Scanner inputNewLastname = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("Enter your lastname : ");
+                    String lastname = inputNewUsername.nextLine();
+
+                    // email
+                    Scanner inputEmail = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("Enter your email : ");
+                    String email = inputNewUsername.nextLine();
 
                     if (type.equals("Owner")) {
-                        users.add(new Owner(newUsername));
+                        users.add(new Owner(newUsername, firstname, lastname, email));
                     } else {
-                        users.add(new Tenant(newUsername));
+                        users.add(new Tenant(newUsername, firstname, lastname, email));
                     }
 
                     System.out.println("Welcome " + newUsername + " ! " + "You are now a " + ANSI_BLUE + type + ANSI_RESET);
