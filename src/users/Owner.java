@@ -15,10 +15,7 @@ import java.util.ArrayList;
 public class Owner extends User {
 
     ArrayList<Property> properties;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private double walletBalance;
+
     public Owner(String _username, String _firstName, String _lastName, String _email) {
         this.username = _username;
         this.firstName = _firstName;

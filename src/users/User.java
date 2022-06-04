@@ -13,16 +13,25 @@ import static main.Main.*;
 public class User {
 
     protected String username;
+    protected String firstName;
+    protected String lastName;
+    protected String email;
+    protected double walletBalance;
 
     public void setUsername(String _username) {
-        username = _username;
+        this.username = _username;
     }
     public String getUsername() {
-        return this.username;
+        return username;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
     }
 
     public static void displayDashboard() {
-        System.out.println(ANSI_GREEN + "1. Change Username" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "1. See your account information" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "2. Change Username" + ANSI_RESET);
     }
 
     public static void changeUsername(String username, String newUsername) {

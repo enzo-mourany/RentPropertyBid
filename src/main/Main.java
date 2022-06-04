@@ -82,7 +82,7 @@ public class Main {
                             type = "Tenant";
                             break;
                         } else {
-                            System.out.println(profileType + " is not a correct awnser");
+                            System.out.println(profileType + " is not a correct answer");
                         }
                     }
 
@@ -119,6 +119,11 @@ public class Main {
                     int command = commandChoice.nextInt();
                     switch(command){
                         case 1:
+                            for (User user : users) {
+                                if (username.equals(user.getUsername())) {
+                                    System.out.println(user.getUsername());
+                                }
+                            }
 
                             break;
                         case 2:
