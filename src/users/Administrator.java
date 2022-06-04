@@ -4,10 +4,14 @@
  */
 package users;
 
+import java.util.ArrayList;
+
+
 /**
  *
  * @author enzomourany
  */
 public class Administrator extends User {
-    
+
+
 }

@@ -16,15 +16,25 @@ import java.util.Scanner;
  */
 public class Main {
 
-    ArrayList<User> users;
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
+    public static ArrayList<User> users = new ArrayList<>();
 
+    public static ArrayList<String> getAllUsers() {
+        ArrayList<String> usernames = new ArrayList<>();
+        for (User user : users) {
+            usernames.add(user.getUsername());
+        }
+        return usernames;
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList<User> users = new ArrayList<>();
         users.add(new Tenant("Chris"));
         users.add(new Tenant("Alex"));
         users.add(new Owner("Patrick"));
@@ -39,7 +49,8 @@ public class Main {
             Scanner enteredUsername = new Scanner(System.in);  // Create a Scanner object
             System.out.println("Enter your username : ");
             String userName = enteredUsername.nextLine();  // Read user input
-            if (userName.equals(Logins.USER1.username)) {
+
+            if (userName.equals(users.get(0))) {
                 System.out.println("Welcome back " + userName);
                 connected = true;
             } else {
@@ -78,7 +89,7 @@ public class Main {
                         users.add(new Tenant(newUsername));
                     }
 
-                    System.out.println("Welcome " + newUsername + " ! " + "You are now a " + type);
+                    System.out.println("Welcome " + newUsername + " ! " + "You are now a " + ANSI_BLUE + type + ANSI_RESET);
                     connected = true;
                 }
             }
