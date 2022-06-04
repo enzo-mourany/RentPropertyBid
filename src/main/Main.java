@@ -93,17 +93,17 @@ public class Main {
                     // firstname
                     Scanner inputFirstname = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter your first name : ");
-                    String firstname = inputUsername.nextLine();
+                    String firstname = inputFirstname.nextLine();
 
                     // lastname
                     Scanner inputLastname = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter your last name : ");
-                    String lastname = inputUsername.nextLine();
+                    String lastname = inputLastname.nextLine();
 
                     // email
                     Scanner inputEmail = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter your email : ");
-                    String email = inputUsername.nextLine();
+                    String email = inputEmail.nextLine();
 
                     if (type.equals("Owner")) {
                         users.add(new Owner(username, firstname, lastname, email));
@@ -137,6 +137,7 @@ public class Main {
                                 System.out.println("Enter your new username : ");
                                 String newUsername = InputNewUsername.nextLine();
                                 changeUsername(username, newUsername);
+                                username = newUsername;
                                 break;
                             case 3:
                                 Scanner InputNewFirstName = new Scanner(System.in);
@@ -188,13 +189,13 @@ public class Main {
                         addNewAdministrator();
                         break;
                     case 4:
-                        isDisconnected = false;
-                        break;
-                    case 5:
                         Scanner inputUser = new Scanner(System.in);
                         System.out.println("Enter name of the user");
                         String user = inputUser.nextLine();
                         editUserInfoAccount(user);
+                    case 5:
+                        isDisconnected = false;
+                        break;
                     default:
                         System.out.println("Incorrect choice");
                         break;
