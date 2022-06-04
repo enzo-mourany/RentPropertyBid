@@ -223,18 +223,29 @@ public class Main {
                                     System.out.println(getPropertiesName());
                                     break;
                                 case 9:
-                                    Scanner inputChoosenProperty = new Scanner(System.in);
-                                    System.out.println("Choose a property to edit");
-                                    String choosenProperty = inputChoosenProperty.nextLine();
-                                    Property currentProperty = null;
-                                    displayEditingPropertyInfos();
-                                    for (Property p : portfolio) {
-                                        if (choosenProperty.equals(p.getPropertyName())) {
-                                            currentProperty = p;
+                                    boolean isExistingProperty = true;
+                                    while (isExistingProperty) {
+                                        Scanner inputChoosenProperty = new Scanner(System.in);
+                                        System.out.println("Choose a property to edit");
+                                        String choosenProperty = inputChoosenProperty.nextLine();
+                                        for (Property property : portfolio) {
+                                            if (choosenProperty.equals(property.getPropertyName())) {
+                                                Property currentProperty = null;
+                                                displayEditingPropertyInfos();
+                                                for (Property p : portfolio) {
+                                                    if (choosenProperty.equals(p.getPropertyName())) {
+                                                        currentProperty = p;
+                                                    }
+                                                }
+                                                currentProperty.editingPropertyInfos();
+                                                currentProperty.displayPropertyInfos();
+                                                isExistingProperty = false;
+                                            } else {
+                                                System.out.println("Unknown property !");
+                                            }
                                         }
                                     }
-                                    currentProperty.editingPropertyInfos();
-                                    currentProperty.displayPropertyInfos();
+                                    break;
                                 default:
                                     System.out.println("Incorrect choice");
                                     break;
