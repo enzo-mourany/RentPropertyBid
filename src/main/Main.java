@@ -115,6 +115,7 @@ public class Main {
 
                     System.out.println("Welcome " + username + " ! " + "You are now a " + ANSI_BLUE + type + ANSI_RESET);
                     connected = true;
+
                     displayDashboard();
                     Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
                     int command = commandChoice.nextInt();
@@ -143,6 +144,18 @@ public class Main {
                             String newFirstName = InputNewFirstName.nextLine();
                             changeFirstName(username, newFirstName);
                             break;
+                        case 4:
+                            Scanner InputNewLastName = new Scanner(System.in);
+                            System.out.println("Enter your new last name : ");
+                            String newLastName = InputNewLastName.nextLine();
+                            changeFirstName(username, newLastName);
+                            break;
+                        case 5:
+                            Scanner InputNewEmail = new Scanner(System.in);
+                            System.out.println("Enter your new email : ");
+                            String newEmail = InputNewEmail.nextLine();
+                            changeFirstName(username, newEmail);
+                            break;
                         default:
                             System.out.println("Incorrect choice");
                             break;
@@ -151,26 +164,33 @@ public class Main {
             }
         }
         if (isAdmin) {
-            displayAdminDashboard();
-            Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
-            int command = commandChoice.nextInt();
-            switch(command){
-                case 1:
-                    System.out.println(getAllUsers());
-                    break;
-                case 2:
-                    Scanner inputUserToDelete = new Scanner(System.in);
-                    System.out.println("Enter the username of the user to be deleted");
-                    String userToDelete = inputUserToDelete.nextLine();
-                    deleteUserAccount(userToDelete);
-                    break;
-                case 3:
-                    addNewAdministrator();
-                    break;
-                default:
-                    System.out.println("Incorrect choice");
-                    break;
+            Boolean isDisconnected = true;
+            while (isDisconnected) {
+                displayAdminDashboard();
+                Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+                int command = commandChoice.nextInt();
+                switch(command){
+                    case 1:
+                        System.out.println(getAllUsers());
+                        break;
+                    case 2:
+                        Scanner inputUserToDelete = new Scanner(System.in);
+                        System.out.println("Enter the username of the user to be deleted");
+                        String userToDelete = inputUserToDelete.nextLine();
+                        deleteUserAccount(userToDelete);
+                        break;
+                    case 3:
+                        addNewAdministrator();
+                        break;
+                    case 4:
+                        isDisconnected = false;
+                        break;
+                    default:
+                        System.out.println("Incorrect choice");
+                        break;
+                }
             }
+
         }
 
     }

@@ -18,6 +18,7 @@ public class User {
     protected String email;
     protected double walletBalance;
 
+    // Setters
     public void setUsername(String _username) {
         this.username = _username;
     }
@@ -25,6 +26,16 @@ public class User {
     public void setFirstName(String _firstname) {
         this.firstName = _firstname;
     }
+
+    public void setLastName(String _lastName) {
+        this.lastName = _lastName;
+    }
+
+    public void setEmail(String _email) {
+        this.email = _email;
+    }
+
+    // Getters
     public String getUsername() {
         return username;
     }
@@ -75,6 +86,36 @@ public class User {
         for (User user : users) {
             if (username.equals(user.getUsername())) {
                 user.setFirstName(newFirstName);
+            }
+        }
+    }
+
+    /**
+     * Replace current last name by a new last name
+     *
+     * @param username the user's username
+     * @param newLastName the new last name
+     * @author enzomourany
+     */
+    public static void changeLastName(String username, String newLastName) {
+        for (User user : users) {
+            if (username.equals(user.getUsername())) {
+                user.setLastName(newLastName);
+            }
+        }
+    }
+
+    /**
+     * Replace current email by a new email
+     *
+     * @param username the user's username
+     * @param newEmail the new email
+     * @author enzomourany
+     */
+    public static void changeEmail(String username, String newEmail) {
+        for (User user : users) {
+            if (username.equals(user.getUsername())) {
+                user.setEmail(newEmail);
             }
         }
     }

@@ -25,6 +25,7 @@ public class Administrator extends User {
         System.out.println(ANSI_GREEN + "1. Display all users" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "2. Delete an account" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "3. Add new administrator" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "4. Disconnect" + ANSI_RESET);
     }
 
     /**
