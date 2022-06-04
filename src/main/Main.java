@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static users.Administrator.*;
+import static users.User.*;
 
 
 /**
@@ -86,38 +87,55 @@ public class Main {
                     }
 
                     // new Username
-                    Scanner inputNewUsername = new Scanner(System.in);  // Create a Scanner object
+                    Scanner inputUsername = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter an username : ");
-                    String newUsername = inputNewUsername.nextLine();
+                    String username = inputUsername.nextLine();
 
                     // firstname
-                    Scanner inputNewFirstName = new Scanner(System.in);  // Create a Scanner object
+                    Scanner inputFirstname = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter your firstname : ");
-                    String firstname = inputNewUsername.nextLine();
+                    String firstname = inputUsername.nextLine();
 
                     // lastname
-                    Scanner inputNewLastname = new Scanner(System.in);  // Create a Scanner object
+                    Scanner inputLastname = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter your lastname : ");
-                    String lastname = inputNewUsername.nextLine();
+                    String lastname = inputUsername.nextLine();
 
                     // email
                     Scanner inputEmail = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("Enter your email : ");
-                    String email = inputNewUsername.nextLine();
+                    String email = inputUsername.nextLine();
 
                     if (type.equals("Owner")) {
-                        users.add(new Owner(newUsername, firstname, lastname, email));
+                        users.add(new Owner(username, firstname, lastname, email));
                     } else {
-                        users.add(new Tenant(newUsername, firstname, lastname, email));
+                        users.add(new Tenant(username, firstname, lastname, email));
                     }
 
-                    System.out.println("Welcome " + newUsername + " ! " + "You are now a " + ANSI_BLUE + type + ANSI_RESET);
+                    System.out.println("Welcome " + username + " ! " + "You are now a " + ANSI_BLUE + type + ANSI_RESET);
                     connected = true;
+                    displayDashboard();
+                    Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+                    int command = commandChoice.nextInt();
+                    switch(command){
+                        case 1:
+
+                            break;
+                        case 2:
+                            Scanner InputNewUsername = new Scanner(System.in);
+                            System.out.println("Enter your new username : ");
+                            String newUsername = InputNewUsername.nextLine();
+                            changeUsername(username, newUsername);
+                            break;
+                        default:
+                            System.out.println("Incorrect choice");
+                            break;
+                    }
                 }
             }
         }
         if (isAdmin) {
-            displayDashboard();
+            displayAdminDashboard();
             Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
             int command = commandChoice.nextInt();
             switch(command){

@@ -20,7 +20,8 @@ public class Administrator extends User {
         this.username = USERNAME;
     }
 
-    public static void displayDashboard() {
+
+    public static void displayAdminDashboard() {
         System.out.println(ANSI_GREEN + "1. Display all users" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "2. Delete an account" + ANSI_RESET);
         System.out.println(ANSI_GREEN + "3. Add new administrator" + ANSI_RESET);
@@ -43,4 +44,6 @@ public class Administrator extends User {
     public static void addNewAdministrator() {
         users.add(new Administrator());
     }
+
+
 }
