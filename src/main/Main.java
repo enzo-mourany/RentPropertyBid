@@ -137,6 +137,12 @@ public class Main {
                             String newUsername = InputNewUsername.nextLine();
                             changeUsername(username, newUsername);
                             break;
+                        case 3:
+                            Scanner InputNewFirstName = new Scanner(System.in);
+                            System.out.println("Enter your new first name : ");
+                            String newFirstName = InputNewFirstName.nextLine();
+                            changeFirstName(username, newFirstName);
+                            break;
                         default:
                             System.out.println("Incorrect choice");
                             break;
