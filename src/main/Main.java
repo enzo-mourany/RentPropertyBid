@@ -9,6 +9,7 @@ import users.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static users.Administrator.deleteUserAccount;
 import static users.Administrator.displayDashboard;
 
 
@@ -103,6 +104,17 @@ public class Main {
         }
         if (isAdmin) {
             displayDashboard();
+            Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+            int command = commandChoice.nextInt();
+            if (command == 1) {
+                System.out.println(getAllUsers());
+            }
+            if (command == 2) {
+                Scanner inputUserToDelete = new Scanner(System.in);
+                System.out.println("Enter the username of the user to be deleted");
+                String userToDelete = inputUserToDelete.nextLine();
+                deleteUserAccount(userToDelete);
+            }
         }
 
     }
