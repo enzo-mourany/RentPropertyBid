@@ -23,6 +23,7 @@ public class Main {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_CYAN = "\u001B[36m";
 
     public static ArrayList<User> users = new ArrayList<>();
 
@@ -93,12 +94,12 @@ public class Main {
 
                     // firstname
                     Scanner inputFirstname = new Scanner(System.in);  // Create a Scanner object
-                    System.out.println("Enter your firstname : ");
+                    System.out.println("Enter your first name : ");
                     String firstname = inputUsername.nextLine();
 
                     // lastname
                     Scanner inputLastname = new Scanner(System.in);  // Create a Scanner object
-                    System.out.println("Enter your lastname : ");
+                    System.out.println("Enter your last name : ");
                     String lastname = inputUsername.nextLine();
 
                     // email
@@ -121,7 +122,11 @@ public class Main {
                         case 1:
                             for (User user : users) {
                                 if (username.equals(user.getUsername())) {
-                                    System.out.println(user.getUsername());
+                                    System.out.println("Username : " + ANSI_CYAN + user.getUsername() + ANSI_RESET + "\n"
+                                        + "First name : " + ANSI_CYAN + user.getFirstName() + ANSI_RESET + "\n"
+                                            + "Last name : " + ANSI_CYAN + user.getLasttName() + ANSI_RESET + "\n"
+                                            + "Email : " + ANSI_CYAN + user.getEmail() + ANSI_RESET
+                                    );
                                 }
                             }
 

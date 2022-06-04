@@ -26,7 +26,15 @@ public class User {
     }
 
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
+    }
+
+    public String getLasttName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public static void displayDashboard() {
