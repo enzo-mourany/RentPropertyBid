@@ -9,6 +9,8 @@ import users.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static users.Administrator.displayDashboard;
+
 
 /**
  *
@@ -43,6 +45,7 @@ public class Main {
 
 
         Boolean connected = false;
+        Boolean isAdmin = false;
         String type = null;
         System.out.println("LOGIN");
         while (connected == false) {
@@ -56,6 +59,7 @@ public class Main {
             } else if (userName.equals("Admin") || userName.equals("Administrator")) {
                 System.out.println("Welcome back, you are now connected as " + ANSI_RED + "Administrator" + ANSI_RESET);
                 connected = true;
+                isAdmin = true;
             } else {
                 System.out.println("Unknown username");
                 Scanner retry = new Scanner(System.in);  // Create a Scanner object
@@ -96,6 +100,9 @@ public class Main {
                     connected = true;
                 }
             }
+        }
+        if (isAdmin) {
+            displayDashboard();
         }
 
     }
