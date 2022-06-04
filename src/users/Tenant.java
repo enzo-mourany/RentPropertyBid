@@ -10,8 +10,6 @@ package users;
  */
 public class Tenant extends User {
 
-
-
     public Tenant(String _username, String _firstName, String _lastName, String _email) {
         this.username = _username;
         this.firstName = _firstName;

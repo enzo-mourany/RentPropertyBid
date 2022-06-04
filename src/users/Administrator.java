@@ -7,9 +7,6 @@ package users;
 import java.util.Scanner;
 
 import static main.Main.*;
-//import static main.Main.ANSI_GREEN;
-//import static main.Main.ANSI_RESET;
-//import static main.Main.users;
 
 /**
  *
@@ -22,13 +19,16 @@ public class Administrator extends User {
         this.username = USERNAME;
     }
 
-
+    /**
+     * Display all admin commands on the console
+     */
     public static void displayAdminDashboard() {
-        System.out.println(ANSI_GREEN + "1. Display all users" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "2. Delete an account" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "3. Add new administrator" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "4. Edit user's account information" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "5. Disconnect" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "1. Display all users" + "\n"
+                + "2. Delete an account" + "\n"
+                + "3. Add new administrator" + "\n"
+                + "4. Edit user's account information" + "\n"
+                + "5. Disconnect" + ANSI_RESET + "\n"
+            );
     }
 
     /**
@@ -45,6 +45,9 @@ public class Administrator extends User {
         }
     }
 
+    /**
+     * Add a new administrator account
+     */
     public static void addNewAdministrator() {
         users.add(new Administrator());
     }
@@ -64,17 +67,22 @@ public class Administrator extends User {
         user.setEmail(newEmail);
     }
 
+    /**
+     * Change infos of a user
+     * @param user the selected user
+     */
     public static void editUserInfoAccount(String user) {
         for (User u : users) {
             if (user.equals(u.getUsername())) {
                 Boolean quit = true;
                 while (quit) {
-                    System.out.println(ANSI_GREEN + "1. Display user's account information" + ANSI_RESET);
-                    System.out.println(ANSI_GREEN + "2. Change user's username" + ANSI_RESET);
-                    System.out.println(ANSI_GREEN + "3. Change user's first name" + ANSI_RESET);
-                    System.out.println(ANSI_GREEN + "4. Change user's last name" + ANSI_RESET);
-                    System.out.println(ANSI_GREEN + "5. Change user's email" + ANSI_RESET);
-                    System.out.println(ANSI_GREEN + "6. Quit" + ANSI_RESET);
+                    System.out.println(ANSI_GREEN + "1. Display user's account information" + "\n"
+                            + "2. Change user's username" + "\n"
+                            + "3. Change user's first name" + "\n"
+                            + "4. Change user's last name" + "\n"
+                            + "5. Change user's email" + "\n"
+                            + "6. Quit" + ANSI_RESET + "\n"
+                        );
                     Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
                     int command = commandChoice.nextInt();
                     switch(command){
@@ -86,27 +94,27 @@ public class Administrator extends User {
                             );
                             break;
                         case 2:
-                            Scanner InputNewUsername = new Scanner(System.in);
+                            Scanner inputNewUsername = new Scanner(System.in);
                             System.out.println("Enter new user's username : ");
-                            String newUsername = InputNewUsername.nextLine();
+                            String newUsername = inputNewUsername.nextLine();
                             changeUsersUsername(u, newUsername);
                             break;
                         case 3:
-                            Scanner InputNewFirstName = new Scanner(System.in);
+                            Scanner inputNewFirstName = new Scanner(System.in);
                             System.out.println("Enter new user's first name : ");
-                            String newFirstName = InputNewFirstName.nextLine();
+                            String newFirstName = inputNewFirstName.nextLine();
                             changeUsersFirstName(u, newFirstName);
                             break;
                         case 4:
-                            Scanner InputNewLastName = new Scanner(System.in);
+                            Scanner inputNewLastName = new Scanner(System.in);
                             System.out.println("Enter new user's last name : ");
-                            String newLastName = InputNewLastName.nextLine();
+                            String newLastName = inputNewLastName.nextLine();
                             changeUsersLastName(u, newLastName);
                             break;
                         case 5:
-                            Scanner InputNewEmail = new Scanner(System.in);
+                            Scanner inputNewEmail = new Scanner(System.in);
                             System.out.println("Enter new user's email : ");
-                            String newEmail = InputNewEmail.nextLine();
+                            String newEmail = inputNewEmail.nextLine();
                             changeUsersEmail(u, newEmail);
                             break;
                         case 6:
@@ -117,10 +125,7 @@ public class Administrator extends User {
                             break;
                     }
                 }
-
             }
         }
     }
-
-
 }

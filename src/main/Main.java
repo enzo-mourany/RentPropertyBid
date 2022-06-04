@@ -49,16 +49,16 @@ public class Main {
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
 
-        Boolean connected = false;
-        Boolean isAdmin = false;
+        boolean connected = false;
+        boolean isAdmin = false;
         String type = null; // type of account : can be Owner or Tenant
         System.out.println("LOGIN");
-        while (connected == false) {
+        while (!connected) {
             Scanner enteredUsername = new Scanner(System.in);  // Create a Scanner object
             System.out.println("Enter your username : ");
             String userName = enteredUsername.nextLine();  // Read user input
 
-            if (userName.equals(users.get(0))) {
+            if (users.contains(userName)) {
                 System.out.println("Welcome back " + userName);
                 connected = true;
             } else if (userName.equalsIgnoreCase("Admin") || userName.equalsIgnoreCase("Administrator")) {
@@ -118,7 +118,7 @@ public class Main {
                     System.out.println("Welcome " + username + " ! " + "You are now a " + ANSI_BLUE + type + ANSI_RESET);
                     connected = true;
 
-                    Boolean isDisconnected = true;
+                    boolean isDisconnected = true;
                     while (isDisconnected) {
                         if (type.equals("Owner")) {
                             displayOwnerDashboard();
@@ -141,28 +141,28 @@ public class Main {
 
                                 break;
                             case 2:
-                                Scanner InputNewUsername = new Scanner(System.in);
+                                Scanner inputNewUsername = new Scanner(System.in);
                                 System.out.println("Enter your new username : ");
-                                String newUsername = InputNewUsername.nextLine();
+                                String newUsername = inputNewUsername.nextLine();
                                 changeUsername(username, newUsername);
                                 username = newUsername;
                                 break;
                             case 3:
-                                Scanner InputNewFirstName = new Scanner(System.in);
+                                Scanner inputNewFirstName = new Scanner(System.in);
                                 System.out.println("Enter your new first name : ");
-                                String newFirstName = InputNewFirstName.nextLine();
+                                String newFirstName = inputNewFirstName.nextLine();
                                 changeFirstName(username, newFirstName);
                                 break;
                             case 4:
-                                Scanner InputNewLastName = new Scanner(System.in);
+                                Scanner inputNewLastName = new Scanner(System.in);
                                 System.out.println("Enter your new last name : ");
-                                String newLastName = InputNewLastName.nextLine();
+                                String newLastName = inputNewLastName.nextLine();
                                 changeLastName(username, newLastName);
                                 break;
                             case 5:
-                                Scanner InputNewEmail = new Scanner(System.in);
+                                Scanner inputNewEmail = new Scanner(System.in);
                                 System.out.println("Enter your new email : ");
-                                String newEmail = InputNewEmail.nextLine();
+                                String newEmail = inputNewEmail.nextLine();
                                 changeEmail(username, newEmail);
                                 break;
                             case 6:
@@ -233,7 +233,7 @@ public class Main {
             }
         }
         if (isAdmin) {
-            Boolean isDisconnected = true;
+            boolean isDisconnected = true;
             while (isDisconnected) {
                 displayAdminDashboard();
                 Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object

@@ -28,18 +28,33 @@ public class Owner extends User {
         this.portfolio = new ArrayList<>();
     }
 
-    public static void addProperty(PropertyType type, String propertyName, String adress, String city, String description, int maxNumberOfOccupants, int rateForOneNight) {
-        portfolio.add(new Property(type, propertyName, adress, city, description, maxNumberOfOccupants, rateForOneNight));
+    /**
+     * Add a new property to owner's portfolio
+     *
+     * @param type the type of property
+     * @param propertyName the name of the property
+     * @param address the address of the property
+     * @param city the city of the property
+     * @param description the description of the property
+     * @param maxNumberOfOccupants the maximum number of people of the property
+     * @param rateForOneNight the price for one night and one person
+     * @author enzomourany
+     */
+    public static void addProperty(PropertyType type, String propertyName, String address, String city, String description, int maxNumberOfOccupants, int rateForOneNight) {
+        portfolio.add(new Property(type, propertyName, address, city, description, maxNumberOfOccupants, rateForOneNight));
     }
 
-
+    /**
+     * Display all actions on the console
+     */
     public static void displayOwnerDashboard() {
-        System.out.println(ANSI_GREEN + "1. See your account information" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "2. Change Username" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "3. Change First name" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "4. Change Last name" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "5. Change email" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "6. Disconnect" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "7. Add new property" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "1. See your account information" + "\n"
+                + "2. Change Username" + "\n"
+                + "3. Change First name" + "\n"
+                + "4. Change Last name" + "\n"
+                + "5. Change email" + "\n"
+                + "6. Disconnect" + "\n"
+                + "7. Add new property" + ANSI_RESET + "\n"
+            );
     }
 }

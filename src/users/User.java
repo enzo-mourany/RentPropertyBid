@@ -18,7 +18,9 @@ public class User {
     protected String email;
     protected double walletBalance;
 
-    // Setters
+    /* ===============================================================================================================
+    *           Setters
+    =============================================================================================================== */
     public void setUsername(String _username) {
         this.username = _username;
     }
@@ -35,7 +37,9 @@ public class User {
         this.email = _email;
     }
 
-    // Getters
+    /* ===============================================================================================================
+    *           Getters
+    =============================================================================================================== */
     public String getUsername() {
         return this.username;
     }
@@ -52,13 +56,21 @@ public class User {
         return this.email;
     }
 
+    /* ===============================================================================================================
+    *           Methods
+    =============================================================================================================== */
+
+    /*
+    * Display all actions on console
+    */
     public static void displayDashboard() {
-        System.out.println(ANSI_GREEN + "1. See your account information" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "2. Change Username" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "3. Change First name" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "4. Change Last name" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "5. Change email" + ANSI_RESET);
-        System.out.println(ANSI_GREEN + "6. Disconnect" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "1. See your account information" + "\n"
+                + "2. Change Username" + "\n"
+                + "3. Change First name" + "\n"
+                + "4. Change Last name" + "\n"
+                + "5. Change email" + "\n"
+                + "6. Disconnect" + "\n" + ANSI_RESET
+            );
     }
 
     /**
