@@ -45,7 +45,6 @@ public class Main {
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
 
-
         Boolean connected = false;
         Boolean isAdmin = false;
         String type = null; // type of account : can be Owner or Tenant
@@ -191,6 +190,11 @@ public class Main {
                     case 4:
                         isDisconnected = false;
                         break;
+                    case 5:
+                        Scanner inputUser = new Scanner(System.in);
+                        System.out.println("Enter name of the user");
+                        String user = inputUser.nextLine();
+                        editUserInfoAccount(user);
                     default:
                         System.out.println("Incorrect choice");
                         break;
