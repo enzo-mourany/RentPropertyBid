@@ -9,8 +9,7 @@ import users.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static users.Administrator.deleteUserAccount;
-import static users.Administrator.displayDashboard;
+import static users.Administrator.*;
 
 
 /**
@@ -57,7 +56,7 @@ public class Main {
             if (userName.equals(users.get(0))) {
                 System.out.println("Welcome back " + userName);
                 connected = true;
-            } else if (userName.equals("Admin") || userName.equals("Administrator")) {
+            } else if (userName.equalsIgnoreCase("Admin") || userName.equalsIgnoreCase("Administrator")) {
                 System.out.println("Welcome back, you are now connected as " + ANSI_RED + "Administrator" + ANSI_RESET);
                 connected = true;
                 isAdmin = true;
@@ -106,14 +105,22 @@ public class Main {
             displayDashboard();
             Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
             int command = commandChoice.nextInt();
-            if (command == 1) {
-                System.out.println(getAllUsers());
-            }
-            if (command == 2) {
-                Scanner inputUserToDelete = new Scanner(System.in);
-                System.out.println("Enter the username of the user to be deleted");
-                String userToDelete = inputUserToDelete.nextLine();
-                deleteUserAccount(userToDelete);
+            switch(command){
+                case 1:
+                    System.out.println(getAllUsers());
+                    break;
+                case 2:
+                    Scanner inputUserToDelete = new Scanner(System.in);
+                    System.out.println("Enter the username of the user to be deleted");
+                    String userToDelete = inputUserToDelete.nextLine();
+                    deleteUserAccount(userToDelete);
+                    break;
+                case 3:
+                    addNewAdministrator();
+                    break;
+                default:
+                    System.out.println("Incorrect choice");
+                    break;
             }
         }
 
