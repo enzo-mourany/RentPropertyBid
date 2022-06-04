@@ -4,12 +4,15 @@
  */
 package main;
 
+import property.PropertyType;
 import users.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static users.Administrator.*;
+import static users.Owner.addProperty;
+import static users.Owner.displayOwnerDashboard;
 
 
 /**
@@ -23,6 +26,7 @@ public class Main {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
 
     public static ArrayList<User> users = new ArrayList<>();
 
@@ -116,7 +120,11 @@ public class Main {
 
                     Boolean isDisconnected = true;
                     while (isDisconnected) {
-                        displayDashboard();
+                        if (type.equals("Owner")) {
+                            displayOwnerDashboard();
+                        } else {
+                            displayDashboard();
+                        }
                         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
                         int command = commandChoice.nextInt();
                         switch(command){
@@ -163,6 +171,52 @@ public class Main {
                             default:
                                 System.out.println("Incorrect choice");
                                 break;
+                        }
+                        if (type.equals("Owner")) {
+                            switch(command) {
+                                case 7:
+                                    // type
+                                    Scanner inputPropertyType = new Scanner(System.in);
+                                    System.out.println("Choose type of your property : " + "\n" + ANSI_PURPLE
+                                            + PropertyType.HOUSE.getName() + " " + PropertyType.APARTMENT.getName()
+                                            + " " + PropertyType.DOMAIN.getName() + " " + ANSI_RESET);
+                                    String propertyType = inputPropertyType.nextLine();
+                                    PropertyType finalType = null;
+                                    PropertyType[] propertyTypes = PropertyType.values();
+                                    for (PropertyType p : propertyTypes) {
+                                        if (p.name().equals(propertyType)) {
+                                            finalType = p;
+                                        }
+                                    }
+                                    //propertyName
+                                    Scanner inputPropertyName = new Scanner(System.in);
+                                    System.out.println("Enter the name of your " + propertyType);
+                                    String propertyName = inputPropertyName.nextLine();
+                                    //adress
+                                    Scanner inputAdress = new Scanner(System.in);
+                                    System.out.println("Enter the adress of your " + propertyType);
+                                    String adress = inputAdress.nextLine();
+                                    //city
+                                    Scanner inputCity = new Scanner(System.in);
+                                    System.out.println("Enter the city of your " + propertyType);
+                                    String city = inputCity.nextLine();
+                                    //description
+                                    Scanner inputDescription = new Scanner(System.in);
+                                    System.out.println("Enter the description of your " + propertyType);
+                                    String description = inputDescription.nextLine();
+                                    //max number of occupants
+                                    Scanner inputMaxNumber = new Scanner(System.in);
+                                    System.out.println("Enter the maximum number of occupants of your " + propertyType);
+                                    int maxNumber = inputMaxNumber.nextInt();
+                                    //price for one night
+                                    Scanner inputRateForOneNight = new Scanner(System.in);
+                                    System.out.println("Enter the price for one night and one person of your " + propertyType);
+                                    int rateForOneNight = inputRateForOneNight.nextInt();
+                                    //Creation of property
+                                    addProperty(finalType, propertyName, adress, city, description, maxNumber, rateForOneNight);
+                            }
+                        } else {
+                            users.add(new Tenant(username, firstname, lastname, email));
                         }
                     }
 
