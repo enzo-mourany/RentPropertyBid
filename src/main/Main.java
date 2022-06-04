@@ -149,13 +149,13 @@ public class Main {
                                 Scanner InputNewLastName = new Scanner(System.in);
                                 System.out.println("Enter your new last name : ");
                                 String newLastName = InputNewLastName.nextLine();
-                                changeFirstName(username, newLastName);
+                                changeLastName(username, newLastName);
                                 break;
                             case 5:
                                 Scanner InputNewEmail = new Scanner(System.in);
                                 System.out.println("Enter your new email : ");
                                 String newEmail = InputNewEmail.nextLine();
-                                changeFirstName(username, newEmail);
+                                changeEmail(username, newEmail);
                                 break;
                             case 6:
                                 isDisconnected = false;
