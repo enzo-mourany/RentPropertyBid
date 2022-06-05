@@ -355,7 +355,6 @@ public class Main {
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
 
 
-
         isConnected = false;
         boolean isAdmin = false;
         String type = null; // type of account : can be Owner or Tenant
