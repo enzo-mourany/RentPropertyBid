@@ -20,6 +20,7 @@ public class Administrator extends User {
     private final String USERNAME = "Administrator";
     public Administrator() {
         this.username = USERNAME;
+        isAdmin = true;
     }
 
     /**

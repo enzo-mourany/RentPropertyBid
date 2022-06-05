@@ -20,12 +20,14 @@ public class Owner extends User {
 
     public static ArrayList<Property> portfolio;
 
+
     public Owner(String _username, String _firstName, String _lastName, String _email) {
         this.username = _username;
         this.firstName = _firstName;
         this.lastName = _lastName;
         this.email = _email;
         this.portfolio = new ArrayList<>();
+        isOwner = true;
     }
 
     /**

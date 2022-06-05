@@ -16,6 +16,9 @@ public class User {
     protected String firstName;
     protected String lastName;
     protected String email;
+
+    protected boolean isOwner = false;
+    protected boolean isAdmin = false;
     protected double walletBalance;
 
     /* ===============================================================================================================
@@ -55,6 +58,10 @@ public class User {
     public String getEmail() {
         return this.email;
     }
+
+    public boolean getIsAdmin() { return this.isAdmin; }
+
+    public boolean getIsOwner() { return this.isOwner; }
 
     /* ===============================================================================================================
     *           Methods

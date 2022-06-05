@@ -31,12 +31,62 @@ public class Main {
 
     public static ArrayList<User> users = new ArrayList<>();
 
+    /**
+     * Get all the users
+     * @return an arrayList of usernames
+     * @author enzomourany
+     */
     public static ArrayList<String> getAllUsers() {
         ArrayList<String> usernames = new ArrayList<>();
         for (User user : users) {
             usernames.add(user.getUsername());
         }
         return usernames;
+    }
+
+    /**
+     * Get all the owners
+     * @return an arrayList of owner's name
+     * @author enzomourany
+     */
+    public static ArrayList<String> getAllOwners() {
+        ArrayList<String> ownerNames = new ArrayList<>();
+        for (User user : users) {
+            if (user.getIsOwner()) {
+                ownerNames.add(user.getUsername());
+            }
+        }
+        return ownerNames;
+    }
+
+    /**
+     * Get all the tenants
+     * @return an arrayList of tenant's name
+     * @author enzomourany
+     */
+    public static ArrayList<String> getAllTenants() {
+        ArrayList<String> tenantNames = new ArrayList<>();
+        for (User user : users) {
+            if (!user.getIsOwner() && !user.getIsAdmin()) {
+                tenantNames.add(user.getUsername());
+            }
+        }
+        return tenantNames;
+    }
+
+    /**
+     * Get all the admins
+     * @return an arrayList of admin's name
+     * @author enzomourany
+     */
+    public static ArrayList<String> getAllAdmins() {
+        ArrayList<String> admins = new ArrayList<>();
+        for (User user : users) {
+            if (user.getIsAdmin()) {
+                admins.add(user.getUsername());
+            }
+        }
+        return admins;
     }
 
     /**
@@ -337,11 +387,11 @@ public class Main {
                     case 6:
                         Scanner inputOwnerName = new Scanner(System.in);
                         // TODO: Display all the owner's name
-                        System.out.println("Enter the owner name : ");
+                        System.out.println("Enter the name of the owner : ");
                         String ownerName = inputOwnerName.nextLine();
                         Scanner inputPropertyName = new Scanner(System.in);
                         // TODO: Display all the propertes
-                        System.out.println("Enter the owner name : ");
+                        System.out.println("Enter the name of the property : ");
                         String propertyName = inputPropertyName.nextLine();
                         Scanner inputNewDescription = new Scanner(System.in);
                         // TODO: Display all the current description
