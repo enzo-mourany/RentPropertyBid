@@ -64,6 +64,8 @@ public class Administrator extends User {
     *           Edit user information
     =============================================================================================================== */
 
+
+    //TODO : change by setter users
     public static void changeUsersUsername(User user, String newUsername) {
         user.setUsername(newUsername);
     }
@@ -173,5 +175,4 @@ public class Administrator extends User {
             }
         }
     }
-
 }

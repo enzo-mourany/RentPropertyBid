@@ -20,7 +20,6 @@ public class Owner extends User {
 
     public static ArrayList<Property> portfolio;
 
-
     public Owner(String _username, String _firstName, String _lastName, String _email) {
         this.username = _username;
         this.firstName = _firstName;
@@ -42,17 +41,18 @@ public class Owner extends User {
      * @param rateForOneNight the price for one night and one person
      * @author enzomourany
      */
-    public static void addProperty(PropertyType type, String propertyName, String address, String city, String description, int maxNumberOfOccupants, int rateForOneNight) {
-        portfolio.add(new Property(type, propertyName, address, city, description, maxNumberOfOccupants, rateForOneNight));
+    public static void addProperty(PropertyType type, String propertyName, String address, String city,
+                                   String description, int maxNumberOfOccupants, int rateForOneNight) {
+        portfolio.add(new Property(type, propertyName, address, city, description, maxNumberOfOccupants,
+                rateForOneNight));
     }
 
-    public ArrayList<Property> getPortfolio() {
-        return portfolio;
-    }
 
     /**
+     * Get all the properties name
      *
      * @return a list of all owner's properties name
+     * @author enzomourany
      */
     public static ArrayList<String> getPropertiesName() {
         ArrayList<String> propertiesName = new ArrayList<>();
@@ -64,6 +64,8 @@ public class Owner extends User {
 
     /**
      * Display all actions on the console
+     *
+     * @author enzomourany
      */
     public static void displayOwnerDashboard() {
         System.out.println(ANSI_GREEN + "1. See your account information" + "\n"

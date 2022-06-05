@@ -16,14 +16,16 @@ public class User {
     protected String firstName;
     protected String lastName;
     protected String email;
-
     protected boolean isOwner = false;
     protected boolean isAdmin = false;
     protected double walletBalance;
 
+
     /* ===============================================================================================================
     *           Setters
     =============================================================================================================== */
+
+
     public void setUsername(String _username) {
         this.username = _username;
     }
@@ -40,9 +42,12 @@ public class User {
         this.email = _email;
     }
 
+
     /* ===============================================================================================================
     *           Getters
     =============================================================================================================== */
+
+
     public String getUsername() {
         return this.username;
     }

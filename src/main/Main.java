@@ -91,10 +91,19 @@ public class Main {
 
     public static boolean isConnected;
 
+    /**
+     * change connection value to disconnect current user
+     */
     public static void setIsConnected() {
         isConnected = false;
     }
 
+    /**
+     * Owner Dashboard support : manage owner account
+     *
+     * @param username the owner's username
+     * @author enzomourany
+     */
     public static void ownerDashboard(String username) {
         displayOwnerDashboard();
         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
@@ -196,13 +205,13 @@ public class Main {
                 while (isExistingProperty) {
                     Scanner inputChoosenProperty = new Scanner(System.in);
                     System.out.println("Choose a property to edit");
-                    String choosenProperty = inputChoosenProperty.nextLine();
+                    String chosenProperty = inputChoosenProperty.nextLine();
                     for (Property property : portfolio) {
-                        if (choosenProperty.equals(property.getPropertyName())) {
+                        if (chosenProperty.equals(property.getPropertyName())) {
                             Property currentProperty = null;
                             displayEditingPropertyInfos();
                             for (Property p : portfolio) {
-                                if (choosenProperty.equals(p.getPropertyName())) {
+                                if (chosenProperty.equals(p.getPropertyName())) {
                                     currentProperty = p;
                                 }
                             }
@@ -221,6 +230,12 @@ public class Main {
         }
     }
 
+    /**
+     * Tenant Dashboard support : manage tenant account
+     *
+     * @param username the tenant's username
+     * @author enzomourany
+     */
     public static void tenantDashboard(String username) {
         displayDashboard();
         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
@@ -272,6 +287,11 @@ public class Main {
         }
     }
 
+    /**
+     * Admin Dashboard support : manage admin account
+     *
+     * @author enzomourany
+     */
     public static void adminDashboard() {
         displayAdminDashboard();
         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
@@ -321,6 +341,7 @@ public class Main {
 
     /**
      * @param args the command line arguments
+     * @author enzomourany
      */
     public static void main(String[] args) {
         // Defaults users
@@ -335,9 +356,9 @@ public class Main {
         String type = null; // type of account : can be Owner or Tenant
         System.out.println("LOGIN");
         while (!isConnected) {
-            Scanner enteredUsername = new Scanner(System.in);  // Create a Scanner object
+            Scanner enteredUsername = new Scanner(System.in);
             System.out.println("Enter your username : ");
-            String userName = enteredUsername.nextLine();  // Read user input
+            String userName = enteredUsername.nextLine();
 
             if (getAllUsers().contains(userName)) {
                 System.out.println("Welcome back " + userName);
@@ -348,13 +369,12 @@ public class Main {
                 isAdmin = true;
             } else {
                 System.out.println("Unknown username");
-                Scanner retry = new Scanner(System.in);  // Create a Scanner object
+                Scanner retry = new Scanner(System.in);
                 System.out.println("You have an account ? : y/n ");
                 String sRetry = retry.nextLine();
                 if (sRetry.equals("n") || sRetry.equals("no")) {
                     System.out.println("REGISTER");
                     // selected what type of profile
-
                     while (type == null) {
                         Scanner inputProfileType = new Scanner(System.in);  // Create a Scanner object
                         System.out.println("What do you want to be ? : Owner(o) | Tenant(t) ");
@@ -371,22 +391,22 @@ public class Main {
                     }
 
                     // new Username
-                    Scanner inputUsername = new Scanner(System.in);  // Create a Scanner object
+                    Scanner inputUsername = new Scanner(System.in);
                     System.out.println("Enter an username : ");
                     String username = inputUsername.nextLine();
 
                     // firstname
-                    Scanner inputFirstname = new Scanner(System.in);  // Create a Scanner object
+                    Scanner inputFirstname = new Scanner(System.in);
                     System.out.println("Enter your first name : ");
                     String firstname = inputFirstname.nextLine();
 
                     // lastname
-                    Scanner inputLastname = new Scanner(System.in);  // Create a Scanner object
+                    Scanner inputLastname = new Scanner(System.in);
                     System.out.println("Enter your last name : ");
                     String lastname = inputLastname.nextLine();
 
                     // email
-                    Scanner inputEmail = new Scanner(System.in);  // Create a Scanner object
+                    Scanner inputEmail = new Scanner(System.in);
                     System.out.println("Enter your email : ");
                     String email = inputEmail.nextLine();
 

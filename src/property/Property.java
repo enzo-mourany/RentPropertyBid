@@ -20,7 +20,8 @@ public class Property {
     private int maxNumberOfOccupants;
     private int rateForOneNight; // for one person
 
-    public Property(PropertyType _type, String _propertyName, String _address, String _city, String _description, int _maxNumberOfOccupants, int _rateForOneNight) {
+    public Property(PropertyType _type, String _propertyName, String _address, String _city, String _description,
+                    int _maxNumberOfOccupants, int _rateForOneNight) {
         this.type = _type;
         this.propertyName = _propertyName;
         this.address = _address;
@@ -69,6 +70,12 @@ public class Property {
     public String getPropertyName() {
         return propertyName;
     }
+
+    /**
+     * Display all the information for one property
+     *
+     * @author enzomourany
+     */
     public void displayPropertyInfos() {
         System.out.println("Type : " + ANSI_CYAN + this.type + ANSI_RESET + "\n"
                 + "Name : " + ANSI_CYAN + this.propertyName + ANSI_RESET + "\n"
@@ -80,6 +87,11 @@ public class Property {
         );
     }
 
+    /**
+     * Display all the information able to edit for one property
+     *
+     * @author enzomourany
+     */
     public static void displayEditingPropertyInfos() {
         System.out.println(ANSI_CYAN + "1. Edit type " + "\n"
                 + "2. Edit Name" + "\n"
@@ -91,6 +103,11 @@ public class Property {
         );
     }
 
+    /**
+     * Property Dashboard support : edit property information
+     *
+     * @author enzomourany
+     */
     public void editingPropertyInfos() {
         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
         int command = commandChoice.nextInt();
@@ -147,7 +164,8 @@ public class Property {
                 setDescription(newDescription);
                 break;
             case 6:
-                System.out.println("Current maximum number of occupants : " + ANSI_CYAN + maxNumberOfOccupants + ANSI_RESET);
+                System.out.println("Current maximum number of occupants : " + ANSI_CYAN
+                        + maxNumberOfOccupants + ANSI_RESET);
                 Scanner inputNewMaxNumberOfOccupants = new Scanner(System.in);
                 System.out.println("Enter a new description : ");
                 int newMaxNumberOfOccupants = inputNewMaxNumberOfOccupants.nextInt();
