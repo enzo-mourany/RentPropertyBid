@@ -221,6 +221,102 @@ public class Main {
         }
     }
 
+    public static void tenantDashboard(String username) {
+        displayDashboard();
+        Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+        int command = commandChoice.nextInt();
+        switch(command){
+            case 1:
+                for (User user : users) {
+                    if (username.equals(user.getUsername())) {
+                        System.out.println("Username : " + ANSI_CYAN + user.getUsername() + ANSI_RESET + "\n"
+                                + "First name : " + ANSI_CYAN + user.getFirstName() + ANSI_RESET + "\n"
+                                + "Last name : " + ANSI_CYAN + user.getLastName() + ANSI_RESET + "\n"
+                                + "Email : " + ANSI_CYAN + user.getEmail() + ANSI_RESET + "\n"
+                        );
+                    }
+                }
+                break;
+            case 2:
+                Scanner inputNewUsername = new Scanner(System.in);
+                System.out.println("Enter your new username : ");
+                String newUsername = inputNewUsername.nextLine();
+                changeUsername(username, newUsername);
+                username = newUsername;
+                break;
+            case 3:
+                Scanner inputNewFirstName = new Scanner(System.in);
+                System.out.println("Enter your new first name : ");
+                String newFirstName = inputNewFirstName.nextLine();
+                changeFirstName(username, newFirstName);
+                break;
+            case 4:
+                Scanner inputNewLastName = new Scanner(System.in);
+                System.out.println("Enter your new last name : ");
+                String newLastName = inputNewLastName.nextLine();
+                changeLastName(username, newLastName);
+                break;
+            case 5:
+                Scanner inputNewEmail = new Scanner(System.in);
+                System.out.println("Enter your new email : ");
+                String newEmail = inputNewEmail.nextLine();
+                changeEmail(username, newEmail);
+                break;
+            case 6:
+                setIsConnected();
+                break;
+
+            default:
+                System.out.println("Incorrect choice");
+                break;
+        }
+    }
+
+    public static void adminDashboard() {
+        displayAdminDashboard();
+        Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+        int command = commandChoice.nextInt();
+        switch(command){
+            case 1:
+                System.out.println(getAllUsers());
+                break;
+            case 2:
+                Scanner inputUserToDelete = new Scanner(System.in);
+                System.out.println("Enter the username of the user to be deleted");
+                String userToDelete = inputUserToDelete.nextLine();
+                deleteUserAccount(userToDelete);
+                break;
+            case 3:
+                addNewAdministrator();
+                break;
+            case 4:
+                Scanner inputUser = new Scanner(System.in);
+                System.out.println("Enter name of the user");
+                String user = inputUser.nextLine();
+                editUserInfoAccount(user);
+            case 5:
+                setIsConnected();
+                break;
+            case 6:
+                Scanner inputOwnerName = new Scanner(System.in);
+                // TODO: Display all the owner's name
+                System.out.println("Enter the name of the owner : ");
+                String ownerName = inputOwnerName.nextLine();
+                Scanner inputPropertyName = new Scanner(System.in);
+                // TODO: Display all the propertes
+                System.out.println("Enter the name of the property : ");
+                String propertyName = inputPropertyName.nextLine();
+                Scanner inputNewDescription = new Scanner(System.in);
+                // TODO: Display all the current description
+                System.out.println("Enter the new Description : ");
+                String newDescription = inputNewDescription.nextLine();
+                changeOwnersPropertyDescription(ownerName, propertyName, newDescription);
+            default:
+                System.out.println("Incorrect choice");
+                break;
+        }
+    }
+
 
 
     /**
@@ -309,112 +405,18 @@ public class Main {
                     while (isConnected) {
 
                         if (type.equals("Owner")) {
-                            /* ===============================================================================================================
-                            *           Owner's account management
-                            =============================================================================================================== */
                             ownerDashboard(username);
                         } else {
-                            /* ===============================================================================================================
-                            *           Tenant's account management
-                            =============================================================================================================== */
-                            displayDashboard();
-                            Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
-                            int command = commandChoice.nextInt();
-                            switch(command){
-                                case 1:
-                                    for (User user : users) {
-                                        if (username.equals(user.getUsername())) {
-                                            System.out.println("Username : " + ANSI_CYAN + user.getUsername() + ANSI_RESET + "\n"
-                                                    + "First name : " + ANSI_CYAN + user.getFirstName() + ANSI_RESET + "\n"
-                                                    + "Last name : " + ANSI_CYAN + user.getLastName() + ANSI_RESET + "\n"
-                                                    + "Email : " + ANSI_CYAN + user.getEmail() + ANSI_RESET + "\n"
-                                            );
-                                        }
-                                    }
-                                    break;
-                                case 2:
-                                    Scanner inputNewUsername = new Scanner(System.in);
-                                    System.out.println("Enter your new username : ");
-                                    String newUsername = inputNewUsername.nextLine();
-                                    changeUsername(username, newUsername);
-                                    username = newUsername;
-                                    break;
-                                case 3:
-                                    Scanner inputNewFirstName = new Scanner(System.in);
-                                    System.out.println("Enter your new first name : ");
-                                    String newFirstName = inputNewFirstName.nextLine();
-                                    changeFirstName(username, newFirstName);
-                                    break;
-                                case 4:
-                                    Scanner inputNewLastName = new Scanner(System.in);
-                                    System.out.println("Enter your new last name : ");
-                                    String newLastName = inputNewLastName.nextLine();
-                                    changeLastName(username, newLastName);
-                                    break;
-                                case 5:
-                                    Scanner inputNewEmail = new Scanner(System.in);
-                                    System.out.println("Enter your new email : ");
-                                    String newEmail = inputNewEmail.nextLine();
-                                    changeEmail(username, newEmail);
-                                    break;
-                                case 6:
-                                    setIsConnected();
-                                    break;
-
-                                default:
-                                    System.out.println("Incorrect choice");
-                                    break;
-                            }
+                            tenantDashboard(username);
                         }
                     }
                 }
             }
         }
         if (isAdmin) {
-            boolean isDisconnected = true;
-            while (isDisconnected) {
-                displayAdminDashboard();
-                Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
-                int command = commandChoice.nextInt();
-                switch(command){
-                    case 1:
-                        System.out.println(getAllUsers());
-                        break;
-                    case 2:
-                        Scanner inputUserToDelete = new Scanner(System.in);
-                        System.out.println("Enter the username of the user to be deleted");
-                        String userToDelete = inputUserToDelete.nextLine();
-                        deleteUserAccount(userToDelete);
-                        break;
-                    case 3:
-                        addNewAdministrator();
-                        break;
-                    case 4:
-                        Scanner inputUser = new Scanner(System.in);
-                        System.out.println("Enter name of the user");
-                        String user = inputUser.nextLine();
-                        editUserInfoAccount(user);
-                    case 5:
-                        isDisconnected = false;
-                        break;
-                    case 6:
-                        Scanner inputOwnerName = new Scanner(System.in);
-                        // TODO: Display all the owner's name
-                        System.out.println("Enter the name of the owner : ");
-                        String ownerName = inputOwnerName.nextLine();
-                        Scanner inputPropertyName = new Scanner(System.in);
-                        // TODO: Display all the propertes
-                        System.out.println("Enter the name of the property : ");
-                        String propertyName = inputPropertyName.nextLine();
-                        Scanner inputNewDescription = new Scanner(System.in);
-                        // TODO: Display all the current description
-                        System.out.println("Enter the new Description : ");
-                        String newDescription = inputNewDescription.nextLine();
-                        changeOwnersPropertyDescription(ownerName, propertyName, newDescription);
-                    default:
-                        System.out.println("Incorrect choice");
-                        break;
-                }
+            isConnected = true;
+            while (isConnected) {
+                adminDashboard();
             }
 
         }
