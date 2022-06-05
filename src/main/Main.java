@@ -89,7 +89,13 @@ public class Main {
         return admins;
     }
 
-    public static void ownerDashboard(String username, boolean isDisconnected) {
+    public static boolean isConnected;
+
+    public static void setIsConnected() {
+        isConnected = false;
+    }
+
+    public static void ownerDashboard(String username) {
         displayOwnerDashboard();
         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
         int command = commandChoice.nextInt();
@@ -131,7 +137,7 @@ public class Main {
                 changeEmail(username, newEmail);
                 break;
             case 6:
-                isDisconnected = false;
+                setIsConnected();
                 break;
             case 7:
                 // type
@@ -215,9 +221,7 @@ public class Main {
         }
     }
 
-    public static boolean setIsDisconected(boolean connected) {
-        return connected;
-    }
+
 
     /**
      * @param args the command line arguments
@@ -301,14 +305,15 @@ public class Main {
 
 
 
-                    boolean isDisconnected = true;
-                    while (isDisconnected) {
-                        /* ===============================================================================================================
-                        *           Owner's account management
-                         =============================================================================================================== */
+                    isConnected = true;
+                    while (isConnected) {
+
                         if (type.equals("Owner")) {
-                            ownerDashboard(username, isDisconnected);
-                        } else if (type.equals("Tenant")) {
+                            /* ===============================================================================================================
+                            *           Owner's account management
+                            =============================================================================================================== */
+                            ownerDashboard(username);
+                        } else {
                             /* ===============================================================================================================
                             *           Tenant's account management
                             =============================================================================================================== */
@@ -353,7 +358,7 @@ public class Main {
                                     changeEmail(username, newEmail);
                                     break;
                                 case 6:
-                                    isDisconnected = false;
+                                    setIsConnected();
                                     break;
 
                                 default:
