@@ -72,19 +72,6 @@ public class User {
     *           Methods
     =============================================================================================================== */
 
-    /*
-    * Display all actions on console
-    */
-    public static void displayDashboard() {
-        System.out.println(ANSI_GREEN + "1. See your account information" + "\n"
-                + "2. Change Username" + "\n"
-                + "3. Change First name" + "\n"
-                + "4. Change Last name" + "\n"
-                + "5. Change email" + "\n"
-                + "6. Disconnect" + "\n" + ANSI_RESET
-            );
-    }
-
     /**
      * Replace current username by a new username
      *

@@ -14,6 +14,7 @@ import java.util.Scanner;
 import static property.Property.displayEditingPropertyInfos;
 import static users.Administrator.*;
 import static users.Owner.*;
+import static users.Tenant.displayTenantDashboard;
 
 
 /**
@@ -126,6 +127,7 @@ public class Main {
                 String newUsername = inputNewUsername.nextLine();
                 changeUsername(username, newUsername);
                 username = newUsername;
+                //TODO : fix bug
                 break;
             case 3:
                 Scanner inputNewFirstName = new Scanner(System.in);
@@ -237,7 +239,7 @@ public class Main {
      * @author enzomourany
      */
     public static void tenantDashboard(String username) {
-        displayDashboard();
+        displayTenantDashboard();
         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
         int command = commandChoice.nextInt();
         switch(command){
@@ -257,7 +259,8 @@ public class Main {
                 System.out.println("Enter your new username : ");
                 String newUsername = inputNewUsername.nextLine();
                 changeUsername(username, newUsername);
-                username = newUsername;
+                //username = newUsername;
+                //TODO : fix bug
                 break;
             case 3:
                 Scanner inputNewFirstName = new Scanner(System.in);
@@ -351,6 +354,8 @@ public class Main {
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
 
+
+
         isConnected = false;
         boolean isAdmin = false;
         String type = null; // type of account : can be Owner or Tenant
@@ -362,6 +367,20 @@ public class Main {
 
             if (getAllUsers().contains(userName)) {
                 System.out.println("Welcome back " + userName);
+                for (User u : users) {
+                    if (userName.equals(u.getUsername())) {
+                        isConnected = true;
+                        while (isConnected) {
+                            if (u.getIsOwner()) {
+                                ownerDashboard(userName);
+                            } else {
+                                tenantDashboard(userName);
+                            }
+                        }
+
+                    }
+                }
+                // TODO: Display dashboard
                 isConnected = true;
             } else if (userName.equalsIgnoreCase("Admin") || userName.equalsIgnoreCase("Administrator")) {
                 System.out.println("Welcome back, you are now connected as " + ANSI_RED + "Administrator" + ANSI_RESET);
