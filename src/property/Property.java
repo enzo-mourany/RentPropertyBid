@@ -33,6 +33,7 @@ public class Property {
     /* ===============================================================================================================
     *           Setters
     =============================================================================================================== */
+
     public void setType(PropertyType _type) {
         this.type = _type;
     }
@@ -71,7 +72,7 @@ public class Property {
     public void displayPropertyInfos() {
         System.out.println("Type : " + ANSI_CYAN + this.type + ANSI_RESET + "\n"
                 + "Name : " + ANSI_CYAN + this.propertyName + ANSI_RESET + "\n"
-                + "Adress : " + ANSI_CYAN + this.address + ANSI_RESET + "\n"
+                + "Address : " + ANSI_CYAN + this.address + ANSI_RESET + "\n"
                 + "City : " + ANSI_CYAN + this.city + ANSI_RESET + "\n"
                 + "Description : " + ANSI_CYAN + this.description + ANSI_RESET + "\n"
                 + "Maximum number of occupants : " + ANSI_CYAN + this.maxNumberOfOccupants + ANSI_RESET + "\n"
@@ -82,7 +83,7 @@ public class Property {
     public static void displayEditingPropertyInfos() {
         System.out.println(ANSI_CYAN + "1. Edit type " + "\n"
                 + "2. Edit Name" + "\n"
-                + "3. Edit Adress" + "\n"
+                + "3. Edit Address" + "\n"
                 + "4. Edit City" + "\n"
                 + "5. Edit Description" + "\n"
                 + "6. Edit Maximum number of occupants" + "\n"
@@ -106,15 +107,12 @@ public class Property {
                     if (newStringType.equalsIgnoreCase("House")) {
                         setType(PropertyType.HOUSE);
                         isDone = false;
-                        break;
                     } else if (newStringType.equalsIgnoreCase("Apartment")) {
                         setType(PropertyType.APARTMENT);
                         isDone = false;
-                        break;
                     } else if (newStringType.equalsIgnoreCase("Domain")) {
                         setType(PropertyType.DOMAIN);
                         isDone = false;
-                        break;
                     } else {
                         System.out.println("Unknown type");
                     }

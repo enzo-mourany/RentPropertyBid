@@ -334,6 +334,20 @@ public class Main {
                     case 5:
                         isDisconnected = false;
                         break;
+                    case 6:
+                        Scanner inputOwnerName = new Scanner(System.in);
+                        // TODO: Display all the owner's name
+                        System.out.println("Enter the owner name : ");
+                        String ownerName = inputOwnerName.nextLine();
+                        Scanner inputPropertyName = new Scanner(System.in);
+                        // TODO: Display all the propertes
+                        System.out.println("Enter the owner name : ");
+                        String propertyName = inputPropertyName.nextLine();
+                        Scanner inputNewDescription = new Scanner(System.in);
+                        // TODO: Display all the current description
+                        System.out.println("Enter the new Description : ");
+                        String newDescription = inputNewDescription.nextLine();
+                        changeOwnersPropertyDescription(ownerName, propertyName, newDescription);
                     default:
                         System.out.println("Incorrect choice");
                         break;

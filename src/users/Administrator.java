@@ -4,9 +4,12 @@
  */
 package users;
 
+import property.Property;
+
 import java.util.Scanner;
 
 import static main.Main.*;
+import static users.Owner.*;
 
 /**
  *
@@ -27,7 +30,8 @@ public class Administrator extends User {
                 + "2. Delete an account" + "\n"
                 + "3. Add new administrator" + "\n"
                 + "4. Edit user's account information" + "\n"
-                + "5. Disconnect" + ANSI_RESET + "\n"
+                + "5. Disconnect" + "\n"
+                + "6. Change property description" + ANSI_RESET + "\n"
             );
     }
 
@@ -52,6 +56,13 @@ public class Administrator extends User {
         users.add(new Administrator());
     }
 
+
+
+
+    /* ===============================================================================================================
+    *           Edit user information
+    =============================================================================================================== */
+
     public static void changeUsersUsername(User user, String newUsername) {
         user.setUsername(newUsername);
     }
@@ -63,6 +74,7 @@ public class Administrator extends User {
     public static void changeUsersLastName(User user, String newLastName) {
         user.setLastName(newLastName);
     }
+
     public static void changeUsersEmail(User user, String newEmail) {
         user.setEmail(newEmail);
     }
@@ -128,4 +140,37 @@ public class Administrator extends User {
             }
         }
     }
+
+    /* ===============================================================================================================
+    *           Edit owner's property information
+    =============================================================================================================== */
+
+    public static void changeOwnersPropertyDescription(String ownerName, String propertyName, String newDescription) {
+        boolean isDone = true;
+        boolean isGoodOwnersName = true;
+        while (isGoodOwnersName) {
+            for (User user : users) {
+                if (ownerName.equals(user.getUsername())) {
+                    while (isDone) {
+                        for (Property property : portfolio) {
+                            if (propertyName.equals(property.getPropertyName())) {
+                                property.setDescription(newDescription);
+                                isDone = false;
+                            } else {
+                                Scanner inputRetryProperty = new Scanner(System.in);
+                                System.out.println("Unknown property, try another : ");
+                                propertyName = inputRetryProperty.nextLine();
+                            }
+                        }
+                    }
+                    isGoodOwnersName = false;
+                } else {
+                    Scanner inputRetryOwner = new Scanner(System.in);
+                    System.out.println("Unknown owner, try another : ");
+                    ownerName = inputRetryOwner.nextLine();
+                }
+            }
+        }
+    }
+
 }

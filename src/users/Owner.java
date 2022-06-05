@@ -44,6 +44,10 @@ public class Owner extends User {
         portfolio.add(new Property(type, propertyName, address, city, description, maxNumberOfOccupants, rateForOneNight));
     }
 
+    public ArrayList<Property> getPortfolio() {
+        return portfolio;
+    }
+
     /**
      *
      * @return a list of all owner's properties name
