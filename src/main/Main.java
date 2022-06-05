@@ -330,21 +330,21 @@ public class Main {
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
 
-        boolean connected = false;
+        isConnected = false;
         boolean isAdmin = false;
         String type = null; // type of account : can be Owner or Tenant
         System.out.println("LOGIN");
-        while (!connected) {
+        while (!isConnected) {
             Scanner enteredUsername = new Scanner(System.in);  // Create a Scanner object
             System.out.println("Enter your username : ");
             String userName = enteredUsername.nextLine();  // Read user input
 
             if (getAllUsers().contains(userName)) {
                 System.out.println("Welcome back " + userName);
-                connected = true;
+                isConnected = true;
             } else if (userName.equalsIgnoreCase("Admin") || userName.equalsIgnoreCase("Administrator")) {
                 System.out.println("Welcome back, you are now connected as " + ANSI_RED + "Administrator" + ANSI_RESET);
-                connected = true;
+                isConnected = true;
                 isAdmin = true;
             } else {
                 System.out.println("Unknown username");
@@ -397,9 +397,6 @@ public class Main {
                     }
 
                     System.out.println("Welcome " + username + " ! " + "You are now a " + ANSI_BLUE + type + ANSI_RESET);
-                    connected = true;
-
-
 
                     isConnected = true;
                     while (isConnected) {
