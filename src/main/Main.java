@@ -89,6 +89,136 @@ public class Main {
         return admins;
     }
 
+    public static void ownerDashboard(String username, boolean isDisconnected) {
+        displayOwnerDashboard();
+        Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+        int command = commandChoice.nextInt();
+        switch(command){
+            case 1:
+                for (User user : users) {
+                    if (username.equals(user.getUsername())) {
+                        System.out.println("Username : " + ANSI_CYAN + user.getUsername() + ANSI_RESET + "\n"
+                                + "First name : " + ANSI_CYAN + user.getFirstName() + ANSI_RESET + "\n"
+                                + "Last name : " + ANSI_CYAN + user.getLastName() + ANSI_RESET + "\n"
+                                + "Email : " + ANSI_CYAN + user.getEmail() + ANSI_RESET + "\n"
+                        );
+                    }
+                }
+                break;
+            case 2:
+                Scanner inputNewUsername = new Scanner(System.in);
+                System.out.println("Enter your new username : ");
+                String newUsername = inputNewUsername.nextLine();
+                changeUsername(username, newUsername);
+                username = newUsername;
+                break;
+            case 3:
+                Scanner inputNewFirstName = new Scanner(System.in);
+                System.out.println("Enter your new first name : ");
+                String newFirstName = inputNewFirstName.nextLine();
+                changeFirstName(username, newFirstName);
+                break;
+            case 4:
+                Scanner inputNewLastName = new Scanner(System.in);
+                System.out.println("Enter your new last name : ");
+                String newLastName = inputNewLastName.nextLine();
+                changeLastName(username, newLastName);
+                break;
+            case 5:
+                Scanner inputNewEmail = new Scanner(System.in);
+                System.out.println("Enter your new email : ");
+                String newEmail = inputNewEmail.nextLine();
+                changeEmail(username, newEmail);
+                break;
+            case 6:
+                isDisconnected = false;
+                break;
+            case 7:
+                // type
+                Scanner inputPropertyType = new Scanner(System.in);
+                System.out.println("Choose type of your property : " + "\n" + ANSI_PURPLE
+                        + PropertyType.HOUSE.getName() + " " + PropertyType.APARTMENT.getName()
+                        + " " + PropertyType.DOMAIN.getName() + " " + ANSI_RESET);
+                String propertyType = inputPropertyType.nextLine();
+
+
+
+                PropertyType finalType = null;
+                PropertyType[] propertyTypes = PropertyType.values();
+                for (PropertyType p : propertyTypes) {
+                    if (p.name().equals(propertyType)) {
+                        finalType = p;
+                    }
+                }
+                //propertyName
+                Scanner inputPropertyName = new Scanner(System.in);
+                System.out.println("Enter the name of your " + propertyType);
+                String propertyName = inputPropertyName.nextLine();
+                //address
+                Scanner inputAdress = new Scanner(System.in);
+                System.out.println("Enter the address of your " + propertyType);
+                String address = inputAdress.nextLine();
+                //city
+                Scanner inputCity = new Scanner(System.in);
+                System.out.println("Enter the city of your " + propertyType);
+                String city = inputCity.nextLine();
+                //description
+                Scanner inputDescription = new Scanner(System.in);
+                System.out.println("Enter the description of your " + propertyType);
+                String description = inputDescription.nextLine();
+                //max number of occupants
+                Scanner inputMaxNumber = new Scanner(System.in);
+                System.out.println("Enter the maximum number of occupants of your " + propertyType);
+                int maxNumber = inputMaxNumber.nextInt();
+                //price for one night
+                Scanner inputRateForOneNight = new Scanner(System.in);
+                System.out.println("Enter the price for one night and one person of your " + propertyType);
+                int rateForOneNight = inputRateForOneNight.nextInt();
+                //Creation of property
+                addProperty(finalType, propertyName, address, city, description, maxNumber, rateForOneNight);
+                for (Property p : portfolio) {
+                    if (propertyName.equals(p.getPropertyName())) {
+                        p.displayPropertyInfos();
+                    }
+                }
+                break;
+            case 8:
+                System.out.println(getPropertiesName());
+                break;
+            case 9:
+                boolean isExistingProperty = true;
+                while (isExistingProperty) {
+                    Scanner inputChoosenProperty = new Scanner(System.in);
+                    System.out.println("Choose a property to edit");
+                    String choosenProperty = inputChoosenProperty.nextLine();
+                    for (Property property : portfolio) {
+                        if (choosenProperty.equals(property.getPropertyName())) {
+                            Property currentProperty = null;
+                            displayEditingPropertyInfos();
+                            for (Property p : portfolio) {
+                                if (choosenProperty.equals(p.getPropertyName())) {
+                                    currentProperty = p;
+                                }
+                            }
+                            currentProperty.editingPropertyInfos();
+                            currentProperty.displayPropertyInfos();
+                            isExistingProperty = false;
+                        } else {
+                            System.out.println("Unknown property !");
+                        }
+                    }
+                }
+                break;
+            default:
+                System.out.println("Incorrect choice");
+                break;
+        }
+    }
+
+    public static boolean setIsDisconected(boolean connected) {
+        return connected;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -109,7 +239,7 @@ public class Main {
             System.out.println("Enter your username : ");
             String userName = enteredUsername.nextLine();  // Read user input
 
-            if (users.contains(userName)) {
+            if (getAllUsers().contains(userName)) {
                 System.out.println("Welcome back " + userName);
                 connected = true;
             } else if (userName.equalsIgnoreCase("Admin") || userName.equalsIgnoreCase("Administrator")) {
@@ -177,132 +307,10 @@ public class Main {
                         *           Owner's account management
                          =============================================================================================================== */
                         if (type.equals("Owner")) {
-                            displayOwnerDashboard();
-                            Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
-                            int command = commandChoice.nextInt();
-                            switch(command){
-                                case 1:
-                                    for (User user : users) {
-                                        if (username.equals(user.getUsername())) {
-                                            System.out.println("Username : " + ANSI_CYAN + user.getUsername() + ANSI_RESET + "\n"
-                                                    + "First name : " + ANSI_CYAN + user.getFirstName() + ANSI_RESET + "\n"
-                                                    + "Last name : " + ANSI_CYAN + user.getLastName() + ANSI_RESET + "\n"
-                                                    + "Email : " + ANSI_CYAN + user.getEmail() + ANSI_RESET + "\n"
-                                            );
-                                        }
-                                    }
-                                    break;
-                                case 2:
-                                    Scanner inputNewUsername = new Scanner(System.in);
-                                    System.out.println("Enter your new username : ");
-                                    String newUsername = inputNewUsername.nextLine();
-                                    changeUsername(username, newUsername);
-                                    username = newUsername;
-                                    break;
-                                case 3:
-                                    Scanner inputNewFirstName = new Scanner(System.in);
-                                    System.out.println("Enter your new first name : ");
-                                    String newFirstName = inputNewFirstName.nextLine();
-                                    changeFirstName(username, newFirstName);
-                                    break;
-                                case 4:
-                                    Scanner inputNewLastName = new Scanner(System.in);
-                                    System.out.println("Enter your new last name : ");
-                                    String newLastName = inputNewLastName.nextLine();
-                                    changeLastName(username, newLastName);
-                                    break;
-                                case 5:
-                                    Scanner inputNewEmail = new Scanner(System.in);
-                                    System.out.println("Enter your new email : ");
-                                    String newEmail = inputNewEmail.nextLine();
-                                    changeEmail(username, newEmail);
-                                    break;
-                                case 6:
-                                    isDisconnected = false;
-                                    break;
-                                case 7:
-                                    // type
-                                    Scanner inputPropertyType = new Scanner(System.in);
-                                    System.out.println("Choose type of your property : " + "\n" + ANSI_PURPLE
-                                            + PropertyType.HOUSE.getName() + " " + PropertyType.APARTMENT.getName()
-                                            + " " + PropertyType.DOMAIN.getName() + " " + ANSI_RESET);
-                                    String propertyType = inputPropertyType.nextLine();
-
-
-
-                                    PropertyType finalType = null;
-                                    PropertyType[] propertyTypes = PropertyType.values();
-                                    for (PropertyType p : propertyTypes) {
-                                        if (p.name().equals(propertyType)) {
-                                            finalType = p;
-                                        }
-                                    }
-                                    //propertyName
-                                    Scanner inputPropertyName = new Scanner(System.in);
-                                    System.out.println("Enter the name of your " + propertyType);
-                                    String propertyName = inputPropertyName.nextLine();
-                                    //address
-                                    Scanner inputAdress = new Scanner(System.in);
-                                    System.out.println("Enter the address of your " + propertyType);
-                                    String address = inputAdress.nextLine();
-                                    //city
-                                    Scanner inputCity = new Scanner(System.in);
-                                    System.out.println("Enter the city of your " + propertyType);
-                                    String city = inputCity.nextLine();
-                                    //description
-                                    Scanner inputDescription = new Scanner(System.in);
-                                    System.out.println("Enter the description of your " + propertyType);
-                                    String description = inputDescription.nextLine();
-                                    //max number of occupants
-                                    Scanner inputMaxNumber = new Scanner(System.in);
-                                    System.out.println("Enter the maximum number of occupants of your " + propertyType);
-                                    int maxNumber = inputMaxNumber.nextInt();
-                                    //price for one night
-                                    Scanner inputRateForOneNight = new Scanner(System.in);
-                                    System.out.println("Enter the price for one night and one person of your " + propertyType);
-                                    int rateForOneNight = inputRateForOneNight.nextInt();
-                                    //Creation of property
-                                    addProperty(finalType, propertyName, address, city, description, maxNumber, rateForOneNight);
-                                    for (Property p : portfolio) {
-                                        if (propertyName.equals(p.getPropertyName())) {
-                                            p.displayPropertyInfos();
-                                        }
-                                    }
-                                    break;
-                                case 8:
-                                    System.out.println(getPropertiesName());
-                                    break;
-                                case 9:
-                                    boolean isExistingProperty = true;
-                                    while (isExistingProperty) {
-                                        Scanner inputChoosenProperty = new Scanner(System.in);
-                                        System.out.println("Choose a property to edit");
-                                        String choosenProperty = inputChoosenProperty.nextLine();
-                                        for (Property property : portfolio) {
-                                            if (choosenProperty.equals(property.getPropertyName())) {
-                                                Property currentProperty = null;
-                                                displayEditingPropertyInfos();
-                                                for (Property p : portfolio) {
-                                                    if (choosenProperty.equals(p.getPropertyName())) {
-                                                        currentProperty = p;
-                                                    }
-                                                }
-                                                currentProperty.editingPropertyInfos();
-                                                currentProperty.displayPropertyInfos();
-                                                isExistingProperty = false;
-                                            } else {
-                                                System.out.println("Unknown property !");
-                                            }
-                                        }
-                                    }
-                                    break;
-                                default:
-                                    System.out.println("Incorrect choice");
-                                    break;
-                            }
+                            ownerDashboard(username, isDisconnected);
                         } else if (type.equals("Tenant")) {
                             /* ===============================================================================================================
-                            *           Owner's account management
+                            *           Tenant's account management
                             =============================================================================================================== */
                             displayDashboard();
                             Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
