@@ -18,7 +18,7 @@ public class User {
     protected String email;
     protected boolean isOwner = false;
     protected boolean isAdmin = false;
-    protected double walletBalance;
+
 
 
     /* ===============================================================================================================

@@ -242,6 +242,15 @@ public class Main {
      */
     public static void tenantDashboard(String username) {
         displayTenantDashboard();
+        Tenant currentTenant = null;
+        for (User u : users) {
+            if (!u.getIsOwner()) {
+                if (username.equals(u.getUsername())) {
+                    currentTenant = (Tenant) u;
+                }
+            }
+
+        }
         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
         int command = commandChoice.nextInt();
         switch(command){
@@ -286,13 +295,18 @@ public class Main {
                 setIsConnected();
                 break;
             case 7:
-                ArrayList<String> allProperties = new ArrayList<String>();
+                ArrayList<String> allProperties = new ArrayList<>();
                 for (User u : users) {
                     if (u.getIsOwner()) {
                         allProperties.add(getPropertiesName().toString());
                     }
                 }
                 System.out.println(allProperties);
+                break;
+            case 8:
+                assert currentTenant != null;
+                currentTenant.addMoneyOnWallet();
+                System.out.println("Your wallet : " + currentTenant.getWalletBalance());
                 break;
             default:
                 System.out.println("Incorrect choice");
