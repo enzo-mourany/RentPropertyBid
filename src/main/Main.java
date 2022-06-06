@@ -269,7 +269,8 @@ public class Main {
 
 
                 //Creation of property
-                currentOwner.addProperty(username, finalType, propertyName, address, city, description, maxNumber, rateForOneNight);
+                currentOwner.addProperty(username, finalType, propertyName, address, city, description,
+                        maxNumber, rateForOneNight);
                 for (Property p : currentOwner.getPortfolio()) {
                     if (propertyName.equals(p.getPropertyName())) {
                         p.displayPropertyInfos();
@@ -372,7 +373,8 @@ public class Main {
             case 7:
                 ArrayList<String> propertiesInfo = new ArrayList<>();
                 for (Property p : properties) {
-                    propertiesInfo.add(ANSI_YELLOW + p.getPropertyName() + ANSI_RESET + " (Owner : " + ANSI_PURPLE + p.getOwner() + ANSI_RESET + ")");
+                    propertiesInfo.add(ANSI_YELLOW + p.getPropertyName() + ANSI_RESET + " (Owner : " + ANSI_PURPLE
+                            + p.getOwner() + ANSI_RESET + ")");
                 }
                 System.out.println(propertiesInfo);
                 break;
@@ -380,6 +382,62 @@ public class Main {
                 assert currentTenant != null;
                 currentTenant.addMoneyOnWallet();
                 System.out.println("Your wallet : " + currentTenant.getWalletBalance());
+                break;
+            case 9:
+                // Owner's name
+                boolean isBadOwnersName = true;
+                String owner = null;
+                while (isBadOwnersName) {
+                    Scanner inputOwner = new Scanner(System.in);
+                    System.out.println("Enter the owner's name : ");
+                    owner = inputOwner.nextLine();
+                    for (User user : users) {
+                        if (owner.equals(user.getUsername())) {
+                            isBadOwnersName = false;
+                        }
+                    }
+                }
+
+                // Property's name
+                boolean isBadProperty = true;
+                String property = null;
+                while (isBadProperty) {
+                    Scanner inputProperty = new Scanner(System.in);
+                    System.out.println("Enter the property's name : ");
+                    property = inputProperty.nextLine();
+                    for (Property p : getOwnerByUsername(owner).getPortfolio()) {
+                        if (property.equals(p.getPropertyName())) {
+                            isBadProperty = false;
+                        }
+                    }
+                }
+
+                // Month
+                Scanner inputMonth = new Scanner(System.in);
+                System.out.println("Enter the month of your reservation : ");
+                String month = inputMonth.nextLine();
+                // Number of occupants
+                Scanner inputNbOfOccupants = new Scanner(System.in);
+                System.out.println("Enter the number of occupants : ");
+                int nbOfOccupants = inputNbOfOccupants.nextInt();
+                // Number of nights
+                Scanner inputNbOfNights = new Scanner(System.in);
+                System.out.println("Enter the number of nights : ");
+                int nbOfNights = inputNbOfNights.nextInt();
+                // Offer amount
+                Scanner inputOfferAmount = new Scanner(System.in);
+                System.out.println("Enter the amount : ");
+                int offerAmount = inputOfferAmount.nextInt();
+                // Bid display
+                System.out.println("Owner " + ANSI_CYAN + owner + ANSI_RESET + "\n"
+                        + "Property name : " + ANSI_CYAN + property + ANSI_RESET + "\n"
+                        + "Month : " + ANSI_CYAN + month + ANSI_RESET + "\n"
+                        + "Number of occupants : " + ANSI_CYAN + nbOfOccupants + ANSI_RESET + "\n"
+                        + "Number of nights : " + ANSI_CYAN + nbOfNights + ANSI_RESET + "\n"
+                        + "Offer amount : " + ANSI_CYAN + offerAmount + ANSI_RESET + "\n" + ANSI_RESET
+                );
+                // Creation of the bid
+                bids.add(new Bid(username, owner, property, month, nbOfOccupants, nbOfNights, offerAmount));
                 break;
             default:
                 System.out.println("Incorrect choice");
@@ -486,8 +544,9 @@ public class Main {
                 "address2", "ville2", "description2", 8, 70));
         System.out.println(properties.get(0) + " " + properties.get(1));
 
-        //bids.add(new Bid(users.get(1).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(), Months.APRIL.getName(), 7, 19, 50));
-        //System.out.println(bids.get(0));
+        bids.add(new Bid(users.get(1).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
+                Months.APRIL.getName(), 7, 19, 50));
+        System.out.println(bids.get(0));
 
 
         rentals.put(users.get(1).getUsername(), Months.APRIL);

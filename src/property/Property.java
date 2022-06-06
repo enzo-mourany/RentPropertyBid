@@ -76,7 +76,7 @@ public class Property {
 
     public String getDescription() { return description; }
 
-    public int setRateForOneNight() {
+    public int getRateForOneNight() {
         return rateForOneNight;
     }
 

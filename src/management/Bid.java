@@ -25,13 +25,14 @@ public class Bid {
     public Bid(String _tenant, String _owner, String _name, String _month, int _nbOfOccupants, int _nbOfNights,
                int _offerAmount) {
         this.tenant = _tenant;
+        this.owner = _owner;
         this.name = _name;
         this.month = _month;
         this.nbOfOccupants = _nbOfOccupants;
         this.nbOfNights = _nbOfNights;
         this.offerAmount = _offerAmount;
-        this.priceForOneNight = getPropertyByName(_owner, _name).setRateForOneNight();
-        this.minOfferAmount = _nbOfOccupants * _nbOfNights * priceForOneNight; // TODO : arondir au multiple suivant de 10
+        //this.priceForOneNight = getPropertyByName(_owner, _name).getRateForOneNight();
+        //this.minOfferAmount = _nbOfOccupants * _nbOfNights * priceForOneNight; // TODO : arondir au multiple suivant de 10
     }
 
 }

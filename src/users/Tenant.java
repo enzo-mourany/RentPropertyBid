@@ -38,7 +38,8 @@ public class Tenant extends User {
                 + "5. Change email" + "\n"
                 + "6. Disconnect" + "\n"
                 + "7. See all properties" + "\n"
-                + "8. Add money on wallet" + "\n" + ANSI_RESET
+                + "8. Add money on wallet" + "\n"
+                + "9. Make a bid on a property" + "\n" + ANSI_RESET
         );
     }
 
