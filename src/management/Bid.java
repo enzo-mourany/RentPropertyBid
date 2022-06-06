@@ -4,8 +4,6 @@
  */
 package management;
 
-import static main.Main.getPropertyByName;
-
 /**
  *
  * @author enzomourany
@@ -14,7 +12,7 @@ public class Bid {
 
     private String tenant; // name of the tenant
     private String owner; // name of the owner
-    private String name; // Name of the property
+    private String propertyName; // Name of the property
     private String month; // Month of lease
     private int nbOfOccupants;
     private int nbOfNights;
@@ -26,13 +24,29 @@ public class Bid {
                int _offerAmount) {
         this.tenant = _tenant;
         this.owner = _owner;
-        this.name = _name;
+        this.propertyName = _name;
         this.month = _month;
         this.nbOfOccupants = _nbOfOccupants;
         this.nbOfNights = _nbOfNights;
         this.offerAmount = _offerAmount;
         //this.priceForOneNight = getPropertyByName(_owner, _name).getRateForOneNight();
         //this.minOfferAmount = _nbOfOccupants * _nbOfNights * priceForOneNight; // TODO : arondir au multiple suivant de 10
+    }
+
+    public String getTenant() {
+        return tenant;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getPropertyName() {
+        return propertyName;
+    }
+
+    public int getOfferAmount() {
+        return offerAmount;
     }
 
 }

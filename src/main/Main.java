@@ -426,6 +426,7 @@ public class Main {
                 int nbOfNights = inputNbOfNights.nextInt();
                 // Offer amount
                 Scanner inputOfferAmount = new Scanner(System.in);
+                // TODO : display the minimum amount
                 System.out.println("Enter the amount : ");
                 int offerAmount = inputOfferAmount.nextInt();
                 // Bid display
@@ -519,6 +520,10 @@ public class Main {
                 changeOwnersPropertyDescription(ownerName, propertyName, newDescription);
                 System.out.println("New property's description : " + ANSI_BLUE +
                         getPropertyByName(ownerName, propertyName).getDescription() + ANSI_RESET); // Display new property's description
+            }
+            case 7 -> {
+                System.out.println("All the bids" + "\n");
+                displayAllBids();
             }
             default -> System.out.println("Incorrect choice");
         }

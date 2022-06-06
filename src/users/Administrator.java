@@ -4,6 +4,7 @@
  */
 package users;
 
+import management.Bid;
 import property.Property;
 
 import java.util.Scanner;
@@ -32,7 +33,8 @@ public class Administrator extends User {
                 + "3. Add new administrator" + "\n"
                 + "4. Edit user's account information" + "\n"
                 + "5. Disconnect" + "\n"
-                + "6. Change property description" + ANSI_RESET + "\n"
+                + "6. Change property description" + "\n"
+                + "7. Display all bids" + ANSI_RESET + "\n"
             );
     }
 
@@ -165,6 +167,20 @@ public class Administrator extends User {
                     isGoodOwnersName = false;
                 }
             }
+        }
+    }
+
+    /**
+     * Display all the bids
+     */
+    public static void displayAllBids() {
+        for (Bid bid : bids) {
+            System.out.println("Tenant : " + ANSI_CYAN + bid.getTenant() + ANSI_RESET + "\n"
+                    + "Owner : " + ANSI_CYAN + bid.getOwner() + ANSI_RESET + "\n"
+                    + "Property's name : " + ANSI_CYAN + bid.getPropertyName() + ANSI_RESET + "\n"
+                    + "Amount : " + ANSI_CYAN + bid.getOfferAmount() + ANSI_RESET + "\n"
+                    + "-------------------------------------------------------" + "\n"
+            );
         }
     }
 }
