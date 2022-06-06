@@ -462,7 +462,6 @@ public class Main {
 
 
         isConnected = false;
-        boolean isAdmin = false;
         String type = null; // type of account : can be Owner or Tenant
         System.out.println("LOGIN");
         while (!isConnected) {
