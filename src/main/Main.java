@@ -393,21 +393,47 @@ public class Main {
                         allOwners.add(u.getUsername());
                     }
                 }
-                System.out.println("Owners " + allOwners);
-                System.out.println("Enter the name of the owner : ");
-                String ownerName = inputOwnerName.nextLine();
+
+
+                String ownerName = null;
+                boolean isGoodOwnersName = true;
+                while (isGoodOwnersName) {
+                    System.out.println("Owners " + allOwners);
+                    System.out.println("Enter the name of the owner : ");
+                    ownerName = inputOwnerName.nextLine();
+                    for (User user : users) {
+                        if (user.getIsOwner()) {
+                            if (ownerName.equals(user.getUsername())) {
+                                isGoodOwnersName = false;
+                            }
+                        }
+                    }
+
+                }
+
 
                 Scanner inputPropertyName = new Scanner(System.in);
-                System.out.println(getAllPropertiesNames()); // Display all the properties name
-                System.out.println("Enter the name of the property : ");
-                String propertyName = inputPropertyName.nextLine();
+                String propertyName = null;
+                boolean isGoodPropertyName = true;
+                while (isGoodPropertyName) {
+                    System.out.println(getAllPropertiesNames()); // Display all the properties name
+                    System.out.println("Enter the name of the property : ");
+                    propertyName = inputPropertyName.nextLine();
+                    for (Property property : getOwnerByUsername(ownerName).getPortfolio()) {
+                        if (propertyName.equals(property.getPropertyName())) {
+                            isGoodPropertyName = false;
+                        }
+                    }
+                }
 
                 Scanner inputNewDescription = new Scanner(System.in);
-                System.out.println("Property's description : " +
-                        getPropertyByName(ownerName, propertyName).getDescription()); // Display property's description
+                System.out.println("Property's description : " + ANSI_BLUE +
+                        getPropertyByName(ownerName, propertyName).getDescription() + ANSI_RESET); // Display property's description
                 System.out.println("Enter the new Description : ");
                 String newDescription = inputNewDescription.nextLine();
                 changeOwnersPropertyDescription(ownerName, propertyName, newDescription);
+                System.out.println("New property's description : " + ANSI_BLUE +
+                        getPropertyByName(ownerName, propertyName).getDescription() + ANSI_RESET); // Display new property's description
             }
             default -> System.out.println("Incorrect choice");
         }

@@ -159,18 +159,10 @@ public class Administrator extends User {
                             if (propertyName.equals(property.getPropertyName())) {
                                 property.setDescription(newDescription);
                                 isDone = false;
-                            } else {
-                                Scanner inputRetryProperty = new Scanner(System.in);
-                                System.out.println("Unknown property, try another : ");
-                                propertyName = inputRetryProperty.nextLine();
                             }
                         }
                     }
                     isGoodOwnersName = false;
-                } else {
-                    Scanner inputRetryOwner = new Scanner(System.in);
-                    System.out.println("Unknown owner, try another : ");
-                    ownerName = inputRetryOwner.nextLine();
                 }
             }
         }
