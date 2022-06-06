@@ -106,6 +106,25 @@ public class Main {
         return owner;
     }
 
+    /**
+     * Get the names of all the properties of all owners
+     *
+     * @return an arraylist of string
+     * @author enzomourany
+     */
+    public static ArrayList<String> getAllPropertiesNames() {
+        ArrayList<String> propertiesNames = new ArrayList<>();
+        for (User u : users) {
+            if (u.getIsOwner()) {
+                Owner owner = (Owner) u;
+                for (String property : owner.getPropertiesName()) {
+                    propertiesNames.add(property + " (Owner : " + owner.getUsername() + ")");
+                }
+            }
+        }
+        return propertiesNames;
+    }
+
     public static boolean isConnected;
 
     /**
@@ -367,10 +386,12 @@ public class Main {
                 System.out.println("Owners " + allOwners);
                 System.out.println("Enter the name of the owner : ");
                 String ownerName = inputOwnerName.nextLine();
+
                 Scanner inputPropertyName = new Scanner(System.in);
-                // TODO: Display all the propertes
+                System.out.println(getAllPropertiesNames()); // Display all the properties name
                 System.out.println("Enter the name of the property : ");
                 String propertyName = inputPropertyName.nextLine();
+
                 Scanner inputNewDescription = new Scanner(System.in);
                 // TODO: Display all the current description
                 System.out.println("Enter the new Description : ");
