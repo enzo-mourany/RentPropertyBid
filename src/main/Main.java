@@ -106,6 +106,13 @@ public class Main {
         return owner;
     }
 
+    /**
+     * Get a property with the property name
+     *
+     * @param owner the property's owner
+     * @param name the property's name
+     * @return an object property
+     */
     public static Property getPropertyByName(String owner, String name) {
         Property property = null;
         for (Property p : getOwnerByUsername(owner).getPortfolio()) {
@@ -478,12 +485,13 @@ public class Main {
 
                     }
                 }
-                // TODO: Display dashboard
                 isConnected = true;
             } else if (userName.equalsIgnoreCase("Admin") || userName.equalsIgnoreCase("Administrator")) {
                 System.out.println("Welcome back, you are now connected as " + ANSI_RED + "Administrator" + ANSI_RESET);
                 isConnected = true;
-                isAdmin = true;
+                while (isConnected) {
+                    adminDashboard();
+                }
             } else {
                 System.out.println("Unknown username");
                 Scanner retry = new Scanner(System.in);
@@ -547,14 +555,5 @@ public class Main {
                 }
             }
         }
-        if (isAdmin) {
-            isConnected = true;
-            while (isConnected) {
-                adminDashboard();
-            }
-
-        }
-
     }
-    
 }
