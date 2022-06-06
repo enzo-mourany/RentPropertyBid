@@ -76,6 +76,10 @@ public class Property {
 
     public String getDescription() { return description; }
 
+    public int setRateForOneNight() {
+        return rateForOneNight;
+    }
+
     public String getOwner() {
         return OWNER;
     }
