@@ -323,28 +323,23 @@ public class Main {
         displayAdminDashboard();
         Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
         int command = commandChoice.nextInt();
-        switch(command){
-            case 1:
-                System.out.println(getAllUsers());
-                break;
-            case 2:
+        switch (command) {
+            case 1 -> System.out.println(getAllUsers());
+            case 2 -> {
                 Scanner inputUserToDelete = new Scanner(System.in);
                 System.out.println("Enter the username of the user to be deleted");
                 String userToDelete = inputUserToDelete.nextLine();
                 deleteUserAccount(userToDelete);
-                break;
-            case 3:
-                addNewAdministrator();
-                break;
-            case 4:
+            }
+            case 3 -> addNewAdministrator();
+            case 4 -> {
                 Scanner inputUser = new Scanner(System.in);
                 System.out.println("Enter name of the user");
                 String user = inputUser.nextLine();
                 editUserInfoAccount(user);
-            case 5:
-                setIsConnected();
-                break;
-            case 6:
+            }
+            case 5 -> setIsConnected();
+            case 6 -> {
                 Scanner inputOwnerName = new Scanner(System.in);
                 ArrayList<String> allOwners = new ArrayList<>();
                 for (User u : users) {
@@ -364,9 +359,8 @@ public class Main {
                 System.out.println("Enter the new Description : ");
                 String newDescription = inputNewDescription.nextLine();
                 changeOwnersPropertyDescription(ownerName, propertyName, newDescription);
-            default:
-                System.out.println("Incorrect choice");
-                break;
+            }
+            default -> System.out.println("Incorrect choice");
         }
     }
 
