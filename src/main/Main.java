@@ -32,11 +32,27 @@ public class Main {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
-    public static ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<User> users = new ArrayList<>(); // All the users
     public static HashMap<String, Months> rentals = new HashMap<>();
     public static ArrayList<Bid> bids = new ArrayList<>();
-    public static ArrayList<Property> properties = new ArrayList<>();
+    public static ArrayList<Property> properties = new ArrayList<>(); // All the properties
+
+    /**
+     * Add all owner's properties on properties arrayList
+     */
+    public static void regroupAllOwnersProperties() {
+        Owner currentOwner = null;
+        for (User user : users) {
+            if (user.getIsOwner()) {
+                currentOwner = (Owner) user;
+                for (Property property : currentOwner.getPortfolio()) {
+                    properties.add(property);
+                }
+            }
+        }
+    }
 
     /**
      * Get all the users
@@ -354,13 +370,11 @@ public class Main {
                 setIsConnected();
                 break;
             case 7:
-                ArrayList<String> allProperties = new ArrayList<>();
-                for (User u : users) {
-                    if (u.getIsOwner()) {
-                        allProperties.add(getOwnerByUsername(u.getUsername()).getPropertiesName().toString());
-                    }
+                ArrayList<String> propertiesInfo = new ArrayList<>();
+                for (Property p : properties) {
+                    propertiesInfo.add(ANSI_YELLOW + p.getPropertyName() + ANSI_RESET + " (Owner : " + ANSI_PURPLE + p.getOwner() + ANSI_RESET + ")");
                 }
-                System.out.println(allProperties);
+                System.out.println(propertiesInfo);
                 break;
             case 8:
                 assert currentTenant != null;
@@ -483,7 +497,7 @@ public class Main {
 
 
 
-
+        regroupAllOwnersProperties();
         isConnected = false;
         String type = null; // type of account : can be Owner or Tenant
         System.out.println("LOGIN");
