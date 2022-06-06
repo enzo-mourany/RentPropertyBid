@@ -482,10 +482,8 @@ public class Main {
                                 tenantDashboard(userName);
                             }
                         }
-
                     }
                 }
-                isConnected = true;
             } else if (userName.equalsIgnoreCase("Admin") || userName.equalsIgnoreCase("Administrator")) {
                 System.out.println("Welcome back, you are now connected as " + ANSI_RED + "Administrator" + ANSI_RESET);
                 isConnected = true;
