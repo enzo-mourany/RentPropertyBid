@@ -191,8 +191,10 @@ public class Main {
                 Scanner inputRateForOneNight = new Scanner(System.in);
                 System.out.println("Enter the price for one night and one person of your " + propertyType);
                 int rateForOneNight = inputRateForOneNight.nextInt();
+
+
                 //Creation of property
-                addProperty(finalType, propertyName, address, city, description, maxNumber, rateForOneNight);
+                addProperty(username, finalType, propertyName, address, city, description, maxNumber, rateForOneNight);
                 for (Property p : portfolio) {
                     if (propertyName.equals(p.getPropertyName())) {
                         p.displayPropertyInfos();
@@ -283,7 +285,15 @@ public class Main {
             case 6:
                 setIsConnected();
                 break;
-
+            case 7:
+                ArrayList<String> allProperties = new ArrayList<String>();
+                for (User u : users) {
+                    if (u.getIsOwner()) {
+                        allProperties.add(getPropertiesName().toString());
+                    }
+                }
+                System.out.println(allProperties);
+                break;
             default:
                 System.out.println("Incorrect choice");
                 break;
@@ -353,6 +363,7 @@ public class Main {
         users.add(new Tenant("Patrick", "Patrick", "Gustin", "patrick.gustin@gmail.com"));
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
+
 
 
         isConnected = false;

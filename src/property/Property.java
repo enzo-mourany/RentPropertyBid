@@ -12,6 +12,8 @@ import static main.Main.*;
  * @author enzomourany
  */
 public class Property {
+
+    private String owner;
     private PropertyType type;
     private String propertyName;
     private String address;
@@ -20,8 +22,9 @@ public class Property {
     private int maxNumberOfOccupants;
     private int rateForOneNight; // for one person
 
-    public Property(PropertyType _type, String _propertyName, String _address, String _city, String _description,
+    public Property(String _owner, PropertyType _type, String _propertyName, String _address, String _city, String _description,
                     int _maxNumberOfOccupants, int _rateForOneNight) {
+        this.owner = _owner;
         this.type = _type;
         this.propertyName = _propertyName;
         this.address = _address;
@@ -69,6 +72,10 @@ public class Property {
 
     public String getPropertyName() {
         return propertyName;
+    }
+
+    public String getOwner() {
+        return owner;
     }
 
     /**

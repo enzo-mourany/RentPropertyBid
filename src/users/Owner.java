@@ -25,13 +25,14 @@ public class Owner extends User {
         this.firstName = _firstName;
         this.lastName = _lastName;
         this.email = _email;
-        this.portfolio = new ArrayList<>();
+        portfolio = new ArrayList<>();
         isOwner = true;
     }
 
     /**
      * Add a new property to owner's portfolio
      *
+     * @param owner the name of the owner
      * @param type the type of property
      * @param propertyName the name of the property
      * @param address the address of the property
@@ -41,9 +42,9 @@ public class Owner extends User {
      * @param rateForOneNight the price for one night and one person
      * @author enzomourany
      */
-    public static void addProperty(PropertyType type, String propertyName, String address, String city,
+    public static void addProperty(String owner, PropertyType type, String propertyName, String address, String city,
                                    String description, int maxNumberOfOccupants, int rateForOneNight) {
-        portfolio.add(new Property(type, propertyName, address, city, description, maxNumberOfOccupants,
+        portfolio.add(new Property(owner, type, propertyName, address, city, description, maxNumberOfOccupants,
                 rateForOneNight));
     }
 
