@@ -22,7 +22,8 @@ public class Bid {
     private int minOfferAmount; // The minimum of offer amount for the bid (by owner)
     private int priceForOneNight; // Price for one night and one person for the property
 
-    public Bid(String _tenant, String _owner,  String _name, String _month, int _nbOfOccupants, int _nbOfNights, int _offerAmount) {
+    public Bid(String _tenant, String _owner, String _name, String _month, int _nbOfOccupants, int _nbOfNights,
+               int _offerAmount) {
         this.tenant = _tenant;
         this.name = _name;
         this.month = _month;
@@ -32,4 +33,5 @@ public class Bid {
         this.priceForOneNight = getPropertyByName(_owner, _name).setRateForOneNight();
         this.minOfferAmount = _nbOfOccupants * _nbOfNights * priceForOneNight; // TODO : arondir au multiple suivant de 10
     }
+
 }

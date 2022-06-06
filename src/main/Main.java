@@ -4,11 +4,12 @@
  */
 package main;
 
+import management.Bid;
+import management.Months;
 import property.Property;
 import property.PropertyType;
 import users.*;
 
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -33,7 +34,9 @@ public class Main {
     public static final String ANSI_PURPLE = "\u001B[35m";
 
     public static ArrayList<User> users = new ArrayList<>();
-    public static HashMap<String, Month> rentals = new HashMap<>();
+    public static HashMap<String, Months> rentals = new HashMap<>();
+    public static ArrayList<Bid> bids = new ArrayList<>();
+    public static ArrayList<Property> properties = new ArrayList<>();
 
     /**
      * Get all the users
@@ -463,11 +466,22 @@ public class Main {
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
 
+        properties.add(new Property(users.get(3).getUsername(), PropertyType.APARTMENT, "Apartment",
+                "address1", "ville", "description", 10, 100));
+        properties.add(new Property(users.get(4).getUsername(), PropertyType.HOUSE, "Maison",
+                "address2", "ville2", "description2", 8, 70));
+        System.out.println(properties.get(0) + " " + properties.get(1));
 
-        rentals.put(users.get(1).getUsername(), Month.APRIL);
-        rentals.put(users.get(2).getUsername(), Month.NOVEMBER);
+        //bids.add(new Bid(users.get(1).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(), Months.APRIL.getName(), 7, 19, 50));
+        //System.out.println(bids.get(0));
+
+
+        rentals.put(users.get(1).getUsername(), Months.APRIL);
+        rentals.put(users.get(2).getUsername(), Months.NOVEMBER);
         System.out.println(rentals.keySet());
         System.out.println(rentals.values());
+
+
 
 
         isConnected = false;
