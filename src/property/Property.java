@@ -13,7 +13,7 @@ import static main.Main.*;
  */
 public class Property {
 
-    private String owner;
+    private final String OWNER;
     private PropertyType type;
     private String propertyName;
     private String address;
@@ -22,9 +22,9 @@ public class Property {
     private int maxNumberOfOccupants;
     private int rateForOneNight; // for one person
 
-    public Property(String _owner, PropertyType _type, String _propertyName, String _address, String _city, String _description,
-                    int _maxNumberOfOccupants, int _rateForOneNight) {
-        this.owner = _owner;
+    public Property(String _owner, PropertyType _type, String _propertyName, String _address, String _city,
+                    String _description, int _maxNumberOfOccupants, int _rateForOneNight) {
+        this.OWNER = _owner;
         this.type = _type;
         this.propertyName = _propertyName;
         this.address = _address;
@@ -75,7 +75,7 @@ public class Property {
     }
 
     public String getOwner() {
-        return owner;
+        return OWNER;
     }
 
     /**
@@ -151,10 +151,10 @@ public class Property {
                 break;
             case 3:
                 System.out.println("Current address : " + ANSI_CYAN + address + ANSI_RESET);
-                Scanner inputNewAdress = new Scanner(System.in);
-                System.out.println("Enter a new adress : ");
-                String newAdress = inputNewAdress.nextLine();
-                setAddress(newAdress);
+                Scanner inputNewAddress = new Scanner(System.in);
+                System.out.println("Enter a new address : ");
+                String newAddress = inputNewAddress.nextLine();
+                setAddress(newAddress);
                 break;
             case 4:
                 System.out.println("Current city : " + ANSI_CYAN + city + ANSI_RESET);
