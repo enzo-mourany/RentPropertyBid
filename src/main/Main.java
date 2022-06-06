@@ -106,6 +106,16 @@ public class Main {
         return owner;
     }
 
+    public static Property getPropertyByName(String owner, String name) {
+        Property property = null;
+        for (Property p : getOwnerByUsername(owner).getPortfolio()) {
+            if (p.getPropertyName().equals(name)) {
+                property = p;
+            }
+        }
+        return property;
+    }
+
     /**
      * Get the names of all the properties of all owners
      *
@@ -393,7 +403,8 @@ public class Main {
                 String propertyName = inputPropertyName.nextLine();
 
                 Scanner inputNewDescription = new Scanner(System.in);
-                // TODO: Display all the current description
+                System.out.println("Property's description : " +
+                        getPropertyByName(ownerName, propertyName).getDescription()); // Display property's description
                 System.out.println("Enter the new Description : ");
                 String newDescription = inputNewDescription.nextLine();
                 changeOwnersPropertyDescription(ownerName, propertyName, newDescription);
@@ -415,7 +426,6 @@ public class Main {
         users.add(new Tenant("Patrick", "Patrick", "Gustin", "patrick.gustin@gmail.com"));
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
-
 
 
         isConnected = false;

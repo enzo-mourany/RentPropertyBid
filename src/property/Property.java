@@ -74,6 +74,8 @@ public class Property {
         return propertyName;
     }
 
+    public String getDescription() { return description; }
+
     public String getOwner() {
         return OWNER;
     }
