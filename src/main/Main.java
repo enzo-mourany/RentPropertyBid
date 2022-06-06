@@ -346,7 +346,13 @@ public class Main {
                 break;
             case 6:
                 Scanner inputOwnerName = new Scanner(System.in);
-                // TODO: Display all the owner's name
+                ArrayList<String> allOwners = new ArrayList<>();
+                for (User u : users) {
+                    if (u.getIsOwner()) {
+                        allOwners.add(u.getUsername());
+                    }
+                }
+                System.out.println("Owners " + allOwners);
                 System.out.println("Enter the name of the owner : ");
                 String ownerName = inputOwnerName.nextLine();
                 Scanner inputPropertyName = new Scanner(System.in);
