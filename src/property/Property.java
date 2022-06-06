@@ -116,7 +116,7 @@ public class Property {
      * @author enzomourany
      */
     public void editingPropertyInfos() {
-        Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+        Scanner commandChoice = new Scanner(System.in);
         int command = commandChoice.nextInt();
         switch(command) {
             case 1:
@@ -126,7 +126,7 @@ public class Property {
                     Scanner inputNewStringType = new Scanner(System.in);
                     System.out.println("Choose a new type of your property : " + "\n" + ANSI_PURPLE
                             + PropertyType.HOUSE.getName() + " " + PropertyType.APARTMENT.getName()
-                            + " " + PropertyType.DOMAIN.getName() + " " + ANSI_RESET);// Create a Scanner object
+                            + " " + PropertyType.DOMAIN.getName() + " " + ANSI_RESET);
                     String newStringType = inputNewStringType.nextLine();
                     if (newStringType.equalsIgnoreCase("House")) {
                         setType(PropertyType.HOUSE);
@@ -184,6 +184,9 @@ public class Property {
                 System.out.println("Enter a new description : ");
                 int newRateForOneNight = inputNewRateForOneNight.nextInt();
                 setRateForOneNight(newRateForOneNight);
+                break;
+            default:
+                System.out.println("Incorrect choice");
                 break;
         }
     }

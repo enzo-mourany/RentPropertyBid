@@ -98,7 +98,7 @@ public class Administrator extends User {
                             + "5. Change user's email" + "\n"
                             + "6. Quit" + ANSI_RESET + "\n"
                         );
-                    Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+                    Scanner commandChoice = new Scanner(System.in);
                     int command = commandChoice.nextInt();
                     switch(command){
                         case 1:
@@ -155,7 +155,7 @@ public class Administrator extends User {
             for (User user : users) {
                 if (ownerName.equals(user.getUsername())) {
                     while (isDone) {
-                        for (Property property : portfolio) {
+                        for (Property property : getPortfolio()) {
                             if (propertyName.equals(property.getPropertyName())) {
                                 property.setDescription(newDescription);
                                 isDone = false;

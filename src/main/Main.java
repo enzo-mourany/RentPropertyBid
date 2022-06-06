@@ -107,7 +107,7 @@ public class Main {
      */
     public static void ownerDashboard(String username) {
         displayOwnerDashboard();
-        Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+        Scanner commandChoice = new Scanner(System.in);
         int command = commandChoice.nextInt();
         switch(command){
             case 1:
@@ -195,7 +195,7 @@ public class Main {
 
                 //Creation of property
                 addProperty(username, finalType, propertyName, address, city, description, maxNumber, rateForOneNight);
-                for (Property p : portfolio) {
+                for (Property p : getPortfolio()) {
                     if (propertyName.equals(p.getPropertyName())) {
                         p.displayPropertyInfos();
                     }
@@ -210,11 +210,11 @@ public class Main {
                     Scanner inputChoosenProperty = new Scanner(System.in);
                     System.out.println("Choose a property to edit");
                     String chosenProperty = inputChoosenProperty.nextLine();
-                    for (Property property : portfolio) {
+                    for (Property property : getPortfolio()) {
                         if (chosenProperty.equals(property.getPropertyName())) {
                             Property currentProperty = null;
                             displayEditingPropertyInfos();
-                            for (Property p : portfolio) {
+                            for (Property p : getPortfolio()) {
                                 if (chosenProperty.equals(p.getPropertyName())) {
                                     currentProperty = p;
                                 }
@@ -251,7 +251,7 @@ public class Main {
             }
 
         }
-        Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+        Scanner commandChoice = new Scanner(System.in);
         int command = commandChoice.nextInt();
         switch(command){
             case 1:
@@ -321,7 +321,7 @@ public class Main {
      */
     public static void adminDashboard() {
         displayAdminDashboard();
-        Scanner commandChoice = new Scanner(System.in);  // Create a Scanner object
+        Scanner commandChoice = new Scanner(System.in);
         int command = commandChoice.nextInt();
         switch (command) {
             case 1 -> System.out.println(getAllUsers());
@@ -419,7 +419,7 @@ public class Main {
                     System.out.println("REGISTER");
                     // selected what type of profile
                     while (type == null) {
-                        Scanner inputProfileType = new Scanner(System.in);  // Create a Scanner object
+                        Scanner inputProfileType = new Scanner(System.in);
                         System.out.println("What do you want to be ? : Owner(o) | Tenant(t) ");
                         String profileType = inputProfileType.nextLine();
                         if (profileType.equals("Owner") || profileType.equals("o")) {

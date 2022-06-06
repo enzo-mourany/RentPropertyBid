@@ -18,7 +18,7 @@ import static main.Main.ANSI_RESET;
  */
 public class Owner extends User {
 
-    public static ArrayList<Property> portfolio;
+    private static ArrayList<Property> portfolio;
 
     public Owner(String _username, String _firstName, String _lastName, String _email) {
         this.username = _username;
@@ -46,6 +46,10 @@ public class Owner extends User {
                                    String description, int maxNumberOfOccupants, int rateForOneNight) {
         portfolio.add(new Property(owner, type, propertyName, address, city, description, maxNumberOfOccupants,
                 rateForOneNight));
+    }
+
+    public static ArrayList<Property> getPortfolio() {
+        return portfolio;
     }
 
 
