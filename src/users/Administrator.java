@@ -155,7 +155,7 @@ public class Administrator extends User {
             for (User user : users) {
                 if (ownerName.equals(user.getUsername())) {
                     while (isDone) {
-                        for (Property property : getPortfolio()) {
+                        for (Property property : getOwnerByUsername(user.getUsername()).getPortfolio()) {
                             if (propertyName.equals(property.getPropertyName())) {
                                 property.setDescription(newDescription);
                                 isDone = false;

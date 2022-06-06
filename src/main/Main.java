@@ -90,6 +90,22 @@ public class Main {
         return admins;
     }
 
+    /**
+     * Get the owner object by his username
+     * @param username the username of the owner
+     * @return a owner object
+     * @author enzomourany
+     */
+    public static Owner getOwnerByUsername(String username) {
+        Owner owner = null;
+        for (User user : users) {
+            if (username.equals(user.getUsername()) && user.getIsOwner()) {
+                owner = (Owner) user;
+            }
+        }
+        return owner;
+    }
+
     public static boolean isConnected;
 
     /**
@@ -107,6 +123,7 @@ public class Main {
      */
     public static void ownerDashboard(String username) {
         displayOwnerDashboard();
+        Owner currentOwner = getOwnerByUsername(username);
         Scanner commandChoice = new Scanner(System.in);
         int command = commandChoice.nextInt();
         switch(command){
@@ -194,15 +211,15 @@ public class Main {
 
 
                 //Creation of property
-                addProperty(username, finalType, propertyName, address, city, description, maxNumber, rateForOneNight);
-                for (Property p : getPortfolio()) {
+                currentOwner.addProperty(username, finalType, propertyName, address, city, description, maxNumber, rateForOneNight);
+                for (Property p : currentOwner.getPortfolio()) {
                     if (propertyName.equals(p.getPropertyName())) {
                         p.displayPropertyInfos();
                     }
                 }
                 break;
             case 8:
-                System.out.println(getPropertiesName());
+                System.out.println(currentOwner.getPropertiesName());
                 break;
             case 9:
                 boolean isExistingProperty = true;
@@ -210,11 +227,11 @@ public class Main {
                     Scanner inputChoosenProperty = new Scanner(System.in);
                     System.out.println("Choose a property to edit");
                     String chosenProperty = inputChoosenProperty.nextLine();
-                    for (Property property : getPortfolio()) {
+                    for (Property property : currentOwner.getPortfolio()) {
                         if (chosenProperty.equals(property.getPropertyName())) {
                             Property currentProperty = null;
                             displayEditingPropertyInfos();
-                            for (Property p : getPortfolio()) {
+                            for (Property p : currentOwner.getPortfolio()) {
                                 if (chosenProperty.equals(p.getPropertyName())) {
                                     currentProperty = p;
                                 }
@@ -298,7 +315,7 @@ public class Main {
                 ArrayList<String> allProperties = new ArrayList<>();
                 for (User u : users) {
                     if (u.getIsOwner()) {
-                        allProperties.add(getPropertiesName().toString());
+                        allProperties.add(getOwnerByUsername(u.getUsername()).getPropertiesName().toString());
                     }
                 }
                 System.out.println(allProperties);

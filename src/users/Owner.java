@@ -18,14 +18,14 @@ import static main.Main.ANSI_RESET;
  */
 public class Owner extends User {
 
-    private static ArrayList<Property> portfolio;
+    private ArrayList<Property> portfolio;
 
     public Owner(String _username, String _firstName, String _lastName, String _email) {
         this.username = _username;
         this.firstName = _firstName;
         this.lastName = _lastName;
         this.email = _email;
-        portfolio = new ArrayList<>();
+        this.portfolio = new ArrayList<>();
         isOwner = true;
     }
 
@@ -42,13 +42,13 @@ public class Owner extends User {
      * @param rateForOneNight the price for one night and one person
      * @author enzomourany
      */
-    public static void addProperty(String owner, PropertyType type, String propertyName, String address, String city,
+    public void addProperty(String owner, PropertyType type, String propertyName, String address, String city,
                                    String description, int maxNumberOfOccupants, int rateForOneNight) {
         portfolio.add(new Property(owner, type, propertyName, address, city, description, maxNumberOfOccupants,
                 rateForOneNight));
     }
 
-    public static ArrayList<Property> getPortfolio() {
+    public ArrayList<Property> getPortfolio() {
         return portfolio;
     }
 
@@ -59,7 +59,7 @@ public class Owner extends User {
      * @return a list of all owner's properties name
      * @author enzomourany
      */
-    public static ArrayList<String> getPropertiesName() {
+    public ArrayList<String> getPropertiesName() {
         ArrayList<String> propertiesName = new ArrayList<>();
         for (Property p : portfolio) {
             propertiesName.add(p.getPropertyName());
