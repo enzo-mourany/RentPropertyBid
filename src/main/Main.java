@@ -8,7 +8,9 @@ import property.Property;
 import property.PropertyType;
 import users.*;
 
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import static property.Property.displayEditingPropertyInfos;
@@ -31,6 +33,7 @@ public class Main {
     public static final String ANSI_PURPLE = "\u001B[35m";
 
     public static ArrayList<User> users = new ArrayList<>();
+    public static HashMap<String, Month> rentals = new HashMap<>();
 
     /**
      * Get all the users
@@ -459,6 +462,12 @@ public class Main {
         users.add(new Tenant("Patrick", "Patrick", "Gustin", "patrick.gustin@gmail.com"));
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
+
+
+        rentals.put(users.get(1).getUsername(), Month.APRIL);
+        rentals.put(users.get(2).getUsername(), Month.NOVEMBER);
+        System.out.println(rentals.keySet());
+        System.out.println(rentals.values());
 
 
         isConnected = false;
