@@ -41,7 +41,9 @@ public class Tenant extends User {
                 + "6. Disconnect" + "\n"
                 + "7. See all properties" + "\n"
                 + "8. Add money on wallet" + "\n"
-                + "9. Make a bid on a property" + "\n" + ANSI_RESET
+                + "9. Make a bid on a property" + "\n"
+                + "10. Display bids per property's name" + "\n"
+                + "11. Display bids per month" + "\n" + ANSI_RESET
         );
     }
 

@@ -17,7 +17,7 @@ import java.util.Scanner;
 import static property.Property.displayEditingPropertyInfos;
 import static users.Administrator.*;
 import static users.Owner.*;
-import static users.Tenant.displayTenantDashboard;
+import static users.Tenant.*;
 
 
 /**
@@ -444,6 +444,36 @@ public class Main {
                 // Creation of the bid
                 bids.add(new Bid(username, owner, property, month, nbOfOccupants, nbOfNights, offerAmount));
                 break;
+            case 10:
+                boolean isBadPropertyName = true;
+                String propertyName = null;
+                while (isBadPropertyName) {
+                    Scanner inputPropertyName = new Scanner(System.in);
+                    System.out.println("Enter the property's name : ");
+                    propertyName = inputPropertyName.nextLine();
+                    for (Bid bid : bids) {
+                        if (propertyName.equals(bid.getPropertyName())) {
+                            isBadPropertyName = false;
+                        }
+                    }
+                }
+                displayBidsPerProperties(propertyName);
+                break;
+            case 11:
+                boolean isBadMonth = true;
+                String propertyMonth = null;
+                while (isBadMonth) {
+                    Scanner inputPropertyMonth = new Scanner(System.in);
+                    System.out.println("Enter the property's name : ");
+                    propertyMonth = inputPropertyMonth.nextLine();
+                    for (Bid bid : bids) {
+                        if (propertyMonth.equals(bid.getPropertyName())) {
+                            isBadMonth = false;
+                        }
+                    }
+                }
+                displayBidsPerMonth(propertyMonth);
+                break;
             default:
                 System.out.println("Incorrect choice");
                 break;
@@ -551,17 +581,15 @@ public class Main {
                 "address1", "ville", "description", 10, 100));
         properties.add(new Property(users.get(4).getUsername(), PropertyType.HOUSE, "Maison",
                 "address2", "ville2", "description2", 8, 70));
-        System.out.println(properties.get(0) + " " + properties.get(1));
+        properties.add(new Property(users.get(4).getUsername(), PropertyType.DOMAIN, "Domain",
+                "address3", "ville3", "description3", 8, 230));
+        properties.add(new Property(users.get(3).getUsername(), PropertyType.HOUSE, "Maison2",
+                "address4", "ville", "description4", 8, 140));
 
         bids.add(new Bid(users.get(1).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
-                Months.APRIL.getName(), 7, 19, 50));
-        System.out.println(bids.get(0));
-
-
-        rentals.put(users.get(1).getUsername(), Months.APRIL);
-        rentals.put(users.get(2).getUsername(), Months.NOVEMBER);
-        System.out.println(rentals.keySet());
-        System.out.println(rentals.values());
+                Months.APRIL.getName(), 7, 19, 110));
+        bids.add(new Bid(users.get(2).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
+                Months.APRIL.getName(), 6, 7, 130));
 
 
 
