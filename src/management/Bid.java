@@ -49,4 +49,8 @@ public class Bid {
         return offerAmount;
     }
 
+    public String getMonth() {
+        return month;
+    }
+
 }

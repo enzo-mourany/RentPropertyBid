@@ -4,10 +4,12 @@
  */
 package users;
 
+import management.Bid;
+
 import java.util.Scanner;
 
-import static main.Main.ANSI_GREEN;
-import static main.Main.ANSI_RESET;
+import static main.Main.*;
+import static main.Main.ANSI_CYAN;
 
 /**
  *
@@ -68,5 +70,46 @@ public class Tenant extends User {
             }
         }
         setWalletBalance(walletBalance + amount);
+    }
+
+    /**
+     * Display all bids with the same property's name
+     *
+     * @param propertyName the property's name
+     * @author enzomourany
+     */
+    public static void displayBidsPerProperties(String propertyName) {
+        for (Bid bid : bids) {
+            if (propertyName.equals(bid.getPropertyName())) {
+                System.out.println("Property's name : " + ANSI_CYAN + bid.getPropertyName() + ANSI_RESET + "\n"
+                        + "Tenant : " + ANSI_CYAN + bid.getTenant() + ANSI_RESET + "\n"
+                        + "Owner : " + ANSI_CYAN + bid.getOwner() + ANSI_RESET + "\n"
+                        + "Month : " + ANSI_CYAN + bid.getMonth() + ANSI_RESET + "\n"
+                        + "Amount : " + ANSI_CYAN + bid.getOfferAmount() + ANSI_RESET + "\n"
+                        + "-------------------------------------------------------" + "\n"
+                );
+            }
+
+        }
+    }
+
+    /**
+     * Display all bids with the same month
+     *
+     * @param month the month
+     * @author enzomourany
+     */
+    public static void displayBidsPerMonth(String month) {
+        for (Bid bid : bids) {
+            if (month.equals(bid.getMonth())) {
+                System.out.println("Property's name : " + ANSI_CYAN + bid.getPropertyName() + ANSI_RESET + "\n"
+                        + "Tenant : " + ANSI_CYAN + bid.getTenant() + ANSI_RESET + "\n"
+                        + "Owner : " + ANSI_CYAN + bid.getOwner() + ANSI_RESET + "\n"
+                        + "Month : " + ANSI_CYAN + bid.getMonth() + ANSI_RESET + "\n"
+                        + "Amount : " + ANSI_CYAN + bid.getOfferAmount() + ANSI_RESET + "\n"
+                        + "-------------------------------------------------------" + "\n"
+                );
+            }
+        }
     }
 }
