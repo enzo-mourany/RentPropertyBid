@@ -304,6 +304,10 @@ public class Main {
                     }
                 }
                 break;
+            case 10:
+                System.out.println("Bids on own properties : " + "\n");
+                displayBidsOnOwnProperty(username);
+                break;
             default:
                 System.out.println("Incorrect choice");
                 break;

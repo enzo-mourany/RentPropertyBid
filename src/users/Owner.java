@@ -4,13 +4,13 @@
  */
 package users;
 
+import management.Bid;
 import property.Property;
 import property.PropertyType;
 
 import java.util.ArrayList;
 
-import static main.Main.ANSI_GREEN;
-import static main.Main.ANSI_RESET;
+import static main.Main.*;
 
 /**
  *
@@ -81,7 +81,23 @@ public class Owner extends User {
                 + "6. Disconnect" + "\n"
                 + "7. Add new property" + "\n"
                 + "8. See portfolio" + "\n"
-                + "9. Edit property information" + ANSI_RESET + "\n"
+                + "9. Edit property information" + "\n"
+                + "10. Display bids on own properties" + ANSI_RESET + "\n"
             );
+    }
+
+    /**
+     * Display all the bids on own properties
+     */
+    public static void displayBidsOnOwnProperty(String username) {
+        for (Bid bid : bids) {
+            if (username.equals(bid.getOwner())) {
+                System.out.println("Property's name : " + ANSI_CYAN + bid.getPropertyName() + ANSI_RESET
+                        + "\n" + "Tenant's name : " + ANSI_CYAN + bid.getTenant() + ANSI_RESET + "\n"
+                        + "Offer amount : " + ANSI_CYAN + bid.getOfferAmount() + ANSI_RESET + "\n"
+                        + "-------------------------------------------------------" + "\n"
+                );
+            }
+        }
     }
 }
