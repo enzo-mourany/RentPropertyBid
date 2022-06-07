@@ -587,9 +587,9 @@ public class Main {
                 "address4", "ville", "description4", 8, 140));
 
         bids.add(new Bid(users.get(1).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
-                Months.APRIL.getName(), 7, 19, 110));
+                Months.APRIL.getName(), 7, 19, 10));
         bids.add(new Bid(users.get(2).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
-                Months.APRIL.getName(), 6, 7, 130));
+                Months.APRIL.getName(), 6, 7, 20));
 
 
 
