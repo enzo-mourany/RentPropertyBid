@@ -2,28 +2,29 @@ package management;
 
 import java.util.ArrayList;
 
-public enum Months {
+public class Months {
 
-    JANUARY("January"),
-    FEBRUARY("February"),
-    MARCH("March"),
-    APRIL("April"),
-    MAY("May"),
-    JUNE("June"),
-    JULY("July"),
-    AUGUST("August"),
-    SEPTEMBER("September"),
-    OCTOBER("October"),
-    NOVEMBER("November"),
-    DECEMBER("December");
+    private static ArrayList<String> months;
 
-    private final String NAME;
-    Months(String _name) {
-        this.NAME = _name;
+    public Months() {
+        months = new ArrayList<>();
+        months.add("January");
+        months.add("February");
+        months.add("March");
+        months.add("April");
+        months.add("May");
+        months.add("June");
+        months.add("July");
+        months.add("August");
+        months.add("September");
+        months.add("October");
+        months.add("November");
+        months.add("December");
     }
 
-    public String getName() {
-        return NAME;
+
+    public static ArrayList<String> getMonths() {
+        return months;
     }
 
 }

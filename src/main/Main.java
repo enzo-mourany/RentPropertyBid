@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import static management.Months.getMonths;
 import static property.Property.displayEditingPropertyInfos;
 import static users.Administrator.*;
 import static users.Owner.*;
@@ -111,6 +112,7 @@ public class Main {
         }
         return admins;
     }
+
 
     /**
      * Get the owner object by his username
@@ -388,6 +390,7 @@ public class Main {
                 System.out.println("Your wallet : " + currentTenant.getWalletBalance());
                 break;
             case 9:
+                System.out.println(getAllOwners());
                 // Owner's name
                 boolean isBadOwnersName = true;
                 String owner = null;
@@ -401,7 +404,7 @@ public class Main {
                         }
                     }
                 }
-
+                System.out.println(getAllPropertiesNames());
                 // Property's name
                 boolean isBadProperty = true;
                 String property = null;
@@ -417,9 +420,19 @@ public class Main {
                 }
 
                 // Month
-                Scanner inputMonth = new Scanner(System.in);
-                System.out.println("Enter the month of your reservation : ");
-                String month = inputMonth.nextLine();
+                boolean isBadMonth = true;
+                String month = null;
+                while (isBadMonth) {
+                    Scanner inputMonth = new Scanner(System.in);
+                    System.out.println("Enter the month of your reservation : ");
+                    month = inputMonth.nextLine();
+                    for (String m : getMonths()) {
+                        if (month.equalsIgnoreCase(m)) {
+                            isBadMonth = false;
+                        }
+                    }
+                }
+
                 // Number of occupants
                 Scanner inputNbOfOccupants = new Scanner(System.in);
                 System.out.println("Enter the number of occupants : ");
@@ -460,15 +473,15 @@ public class Main {
                 displayBidsPerProperties(propertyName);
                 break;
             case 11:
-                boolean isBadMonth = true;
+                boolean isBadMonth2 = true;
                 String propertyMonth = null;
-                while (isBadMonth) {
+                while (isBadMonth2) {
                     Scanner inputPropertyMonth = new Scanner(System.in);
                     System.out.println("Enter the property's name : ");
                     propertyMonth = inputPropertyMonth.nextLine();
                     for (Bid bid : bids) {
                         if (propertyMonth.equals(bid.getPropertyName())) {
-                            isBadMonth = false;
+                            isBadMonth2 = false;
                         }
                     }
                 }
@@ -587,9 +600,9 @@ public class Main {
                 "address4", "ville", "description4", 8, 140));
 
         bids.add(new Bid(users.get(1).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
-                Months.APRIL.getName(), 7, 19, 10));
+                "April", 7, 19, 10));
         bids.add(new Bid(users.get(2).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
-                Months.APRIL.getName(), 6, 7, 20));
+                "November", 6, 7, 20));
 
 
 
