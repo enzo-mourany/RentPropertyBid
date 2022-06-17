@@ -404,7 +404,11 @@ public class Main {
                         }
                     }
                 }
-                System.out.println(getAllPropertiesNames());
+                ArrayList<String> ownersProperties = new ArrayList<>();
+                for (Property p : getOwnerByUsername(owner).getPortfolio()) {
+                    ownersProperties.add(p.getPropertyName());
+                }
+                System.out.println(ownersProperties);
                 // Property's name
                 boolean isBadProperty = true;
                 String property = null;
@@ -602,11 +606,23 @@ public class Main {
                 "address5", "Cenon", "description", 7, 210);
 
 
+        // Filling of properties with all owner's properties
+        for (User user : users) {
+            if (user.getIsOwner()) {
+                Owner owner = (Owner) user;
+                for (Property property : owner.getPortfolio()) {
+                    properties.add(property);
+                }
+            }
+        }
+
+
 
         bids.add(new Bid(users.get(1).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
                 "April", 7, 19, 10));
         bids.add(new Bid(users.get(2).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
                 "November", 6, 7, 20));
+
 
 
 
