@@ -32,7 +32,6 @@ public class Owner extends User {
     /**
      * Add a new property to owner's portfolio
      *
-     * @param owner the name of the owner
      * @param type the type of property
      * @param propertyName the name of the property
      * @param address the address of the property
@@ -42,9 +41,9 @@ public class Owner extends User {
      * @param rateForOneNight the price for one night and one person
      * @author enzomourany
      */
-    public void addProperty(String owner, PropertyType type, String propertyName, String address, String city,
+    public void addProperty(PropertyType type, String propertyName, String address, String city,
                                    String description, int maxNumberOfOccupants, int rateForOneNight) {
-        portfolio.add(new Property(owner, type, propertyName, address, city, description, maxNumberOfOccupants,
+        portfolio.add(new Property(this.username , type, propertyName, address, city, description, maxNumberOfOccupants,
                 rateForOneNight));
     }
 

@@ -271,7 +271,7 @@ public class Main {
 
 
                 //Creation of property
-                currentOwner.addProperty(username, finalType, propertyName, address, city, description,
+                currentOwner.addProperty(finalType, propertyName, address, city, description,
                         maxNumber, rateForOneNight);
                 for (Property p : currentOwner.getPortfolio()) {
                     if (propertyName.equals(p.getPropertyName())) {
@@ -590,14 +590,18 @@ public class Main {
         users.add(new Owner("Sabine", "Sabine", "Young", "sabine.young@outlook.com"));
         users.add(new Owner("Alex", "Alex", "Mousseau", "alex.mousseau@gmail.com"));
 
-        properties.add(new Property(users.get(3).getUsername(), PropertyType.APARTMENT, "Apartment",
-                "address1", "ville", "description", 10, 100));
-        properties.add(new Property(users.get(4).getUsername(), PropertyType.HOUSE, "Maison",
-                "address2", "ville2", "description2", 8, 70));
-        properties.add(new Property(users.get(4).getUsername(), PropertyType.DOMAIN, "Domain",
-                "address3", "ville3", "description3", 8, 230));
-        properties.add(new Property(users.get(3).getUsername(), PropertyType.HOUSE, "Maison2",
-                "address4", "ville", "description4", 8, 140));
+        getOwnerByUsername(getAllOwners().get(1)).addProperty(PropertyType.APARTMENT, "Apartment1",
+                "address1", "Bordeaux", "description", 7, 100);
+        getOwnerByUsername(getAllOwners().get(1)).addProperty(PropertyType.HOUSE, "House1",
+                "address2", "Perpignan", "description", 11, 170);
+        getOwnerByUsername(getAllOwners().get(1)).addProperty(PropertyType.DOMAIN, "Domain1",
+                "address3", "Paris", "description", 18, 490);
+        getOwnerByUsername(getAllOwners().get(0)).addProperty(PropertyType.HOUSE, "House2",
+                "address4", "Lyon", "description", 6, 390);
+        getOwnerByUsername(getAllOwners().get(0)).addProperty(PropertyType.HOUSE, "House3",
+                "address5", "Cenon", "description", 7, 210);
+
+
 
         bids.add(new Bid(users.get(1).getUsername(), users.get(3).getUsername(), properties.get(0).getPropertyName(),
                 "April", 7, 19, 10));
